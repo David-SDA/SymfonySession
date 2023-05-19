@@ -26,6 +26,10 @@ class Session
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $dateFin = null;
 
+    #[ORM\ManyToOne(inversedBy: 'sessions')]
+    #[ORM\JoinColumn(nullable: false)]
+    private ?Formation $formation = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -75,6 +79,18 @@ class Session
     public function setDateFin(\DateTimeInterface $dateFin): self
     {
         $this->dateFin = $dateFin;
+
+        return $this;
+    }
+
+    public function getFormation(): ?Formation
+    {
+        return $this->formation;
+    }
+
+    public function setFormation(?Formation $formation): self
+    {
+        $this->formation = $formation;
 
         return $this;
     }
