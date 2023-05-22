@@ -1,7 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello StagiaireController!{% endblock %}
+{% block title %}Stagiaires{% endblock %}
 
 {% block body %}
-
+    <h1>LISTE DES STAGIAIRES</h1>
+    {% if stagiaires %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Nom complet</th>
+                    <th>Sexe</th>
+                    <th>Date de naissance</th>
+                    <th>Ville</th>
+                    <th>Email</th>
+                    <th>Téléphone</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for stagiaire in stagiaires %}
+                    <tr>
+                        <td><a href="#">{{ stagiaire.prenom }} {{ stagiaire.nom | upper }}</a></td>
+                        <td>{{ stagiaire.sexe }}</td>
+                        <td>{{ stagiaire.dateNaissance | date("d/m/Y") }}</td>
+                        <td>{{ stagiaire.ville }}</td>
+                        <td>{{ stagiaire.email }}</td>
+                        <td>{{ stagiaire.telephone }}</td>
+                        <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 {% endblock %}
