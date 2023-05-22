@@ -39,6 +39,16 @@ class SessionRepository extends ServiceEntityRepository
         }
     }
 
+    // Possiblement à modifier
+    public function getNombreSessionsDansFormation(int $id): int{
+        return $this->createQueryBuilder('s')
+                    ->select('count(s.id)')
+                    ->where('s.formation = :id')
+                    ->setParameter('id', $id)
+                    ->getQuery()
+                    ->getSingleScalarResult();
+    }
+
 //    /**
 //     * @return Session[] Returns an array of Session objects
 //     */

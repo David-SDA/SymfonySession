@@ -1,7 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello FormationController!{% endblock %}
+{% block title %}Formations{% endblock %}
 
 {% block body %}
-
+    <h1>LISTE DES FORMATIONS</h1>
+    {% if formations %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Formation</th>
+                    <th>Sessions</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for formation in formations %}
+                    <tr>
+                        <td><a href="#">{{ formation.libelle }}</a></td>
+                        <td>{{ nombreSession }}</td>
+                        <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 {% endblock %}
