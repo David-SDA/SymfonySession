@@ -35,9 +35,13 @@ class Session
     #[ORM\ManyToMany(targetEntity: Stagiaire::class, inversedBy: 'sessions')]
     private Collection $stagiaires;
 
+    #[ORM\OneToMany(mappedBy: 'session', targetEntity: SessionModule::class)]
+    private Collection $sessionModules;
+
     public function __construct()
     {
         $this->stagiaires = new ArrayCollection();
+        $this->sessionModules = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -125,6 +129,36 @@ class Session
     public function removeStagiaire(Stagiaire $stagiaire): self
     {
         $this->stagiaires->removeElement($stagiaire);
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, SessionModule>
+     */
+    public function getSessionModules(): Collection
+    {
+        return $this->sessionModules;
+    }
+
+    public function addSessionModule(SessionModule $sessionModule): self
+    {
+        if (!$this->sessionModules->contains($sessionModule)) {
+            $this->sessionModules->add($sessionModule);
+            $sessionModule->setSession($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSessionModule(SessionModule $sessionModule): self
+    {
+        if ($this->sessionModules->removeElement($sessionModule)) {
+            // set the owning side to null (unless already changed)
+            if ($sessionModule->getSession() === $this) {
+                $sessionModule->setSession(null);
+            }
+        }
 
         return $this;
     }
