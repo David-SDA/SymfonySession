@@ -1,7 +1,35 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello SessionController!{% endblock %}
+{% block title %}Sessions{% endblock %}
 
 {% block body %}
-
+    <h1>LISTE DES SESSIONS</h1>
+    {% if sessions %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Disponibilité</th>
+                    <th>Formation</th>
+                    <th>Session</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    <th>Inscrits</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for session in sessions %}
+                    <tr>
+                        <td><i>faire la disponibilité(comparaison nb inscrit et nb places)</i></td>
+                        <td><a href="#">{{ session.formation.libelle }}</a></td>
+                        <td><a href="#">{{ session.libelle }}</a></td>
+                        <td>{{ session.dateDebut | date("d/m/Y") }}</td>
+                        <td>{{ session.dateFin | date("d/m/Y") }}</td>
+                        <td>nb/{{ session.nombrePlaces }}</td>
+                        <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 {% endblock %}
