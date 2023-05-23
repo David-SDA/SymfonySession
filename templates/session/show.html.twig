@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %}Détails d'une session{% endblock %}
+
+{% block body %}
+
+    {% if session %}
+
+        <h1>{{ session }}</h1>
+        <div>
+            <h2><i>Détails</i></h2>
+            <p><b>Période : </b>{{ session.dateDebut | date("d/m/Y") }} - {{ session.dateFin | date("d/m/Y") }}</p>
+            <p><b>Nombre de places total : </b>{{ session.nombrePlaces }}</p>
+            <p><b>Nombre de place disponibles : </b>{{ session.nombrePlaces - (session.stagiaires | length) }}</p>
+            <p><b>Nombre total de modules : </b>{{ session.sessionModules | length }}</p>
+        </div>
+        <div>
+            <h2><i>Programme</i></h2>
+            {% if session.sessionModules %}
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Module</td>
+                            <td>Catégorie</td>
+                            <td>Jours</td>
+                            <td>Supprimer</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for sessionModule in session.sessionModules %}
+                            <tr>
+                                <td>{{ sessionModule.module }}</td>
+                                <td><a href="#">{{ sessionModule.module.categorie }}</a></td>
+                                <td>{{ sessionModule.nombreJours }}</td>
+                                <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+        <div>
+            <h2><i>Modules ajoutables</i></h2>
+        </div>
+        <div>
+            <h2><i>Stagiaires inscrit</i></h2>
+            {% if session.stagiaires %}
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Stagiaire</td>
+                            <td>Supprimer</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for stagiaire in session.stagiaires %}
+                            <tr>
+                                <td><a href="{{ path('show_stagiaire', { 'id' : stagiaire.id }) }}">{{ stagiaire }}</a></td>
+                                <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+        <div>
+            <h2><i>Stagiaires ajoutables</i></h2>
+        </div>
+
+    {% endif %}
+
+{% endblock body %}
