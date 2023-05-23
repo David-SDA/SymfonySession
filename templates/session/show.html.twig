@@ -29,7 +29,7 @@
                     <tbody>
                         {% for sessionModule in session.sessionModules %}
                             <tr>
-                                <td><a href="#">{{ sessionModule.module }}</a></td>
+                                <td><a href="{{ path('show_module', { 'id' : sessionModule.module.id }) }}">{{ sessionModule.module }}</a></td>
                                 <td><a href="{{ path('show_categorie', { 'id' : sessionModule.module.categorie.id }) }}">{{ sessionModule.module.categorie }}</a></td>
                                 <td>{{ sessionModule.nombreJours }}</td>
                                 <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
