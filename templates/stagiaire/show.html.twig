@@ -5,13 +5,11 @@
 {% block body %} 
 
     {% if stagiaire %}
-        <h1>{{ stagiaire.prenom }} {{ stagiaire.nom | upper }}</h1>
+        <h1>{{ stagiaire }}</h1>
         <div>
             <h2><i>Détails</i></h2>
             <p><b>Sexe : </b>{{ stagiaire.sexe }}</p>
-            <p>
-                <b>Date de naissance : </b>{{ stagiaire.dateNaissance | date("d/m/Y") }}
-            </p>
+            <p><b>Date de naissance : </b>{{ stagiaire.dateNaissance | date("d/m/Y") }}</p>
             <p><b>Ville : </b>{{ stagiaire.ville }}</p>
             <p><b>Email : </b>{{ stagiaire.email }}</p>
             <p><b>Téléphone : </b>{{ stagiaire.telephone }}</p>
@@ -34,26 +32,16 @@
                 <tbody>
                     {% for session in stagiaire.sessions %}
                     <tr>
-                        <td>
-                            <i
-                                >faire la disponibilité(comparaison nb inscrit et nb
-                                places)</i
-                            >
-                        </td>
-                        <td>
-                            <a
-                                href="{{
-                                    path('show_formation', { id: session.formation.id })
-                                }}"
-                                >{{ session.formation.libelle }}</a
-                            >
-                        </td>
-                        <td>
-                            <a href="#">{{ session.libelle }}</a>
-                        </td>
+                        {% if session.stagiaires | length < session.nombrePlaces %}
+                            <td>DISPONIBLE</td>
+                        {% else %}
+                            <td>COMPLET</td>
+                        {% endif %}
+                        <td><a href="{{path('show_formation', { id: session.formation.id })}}">{{ session.formation }}</a></td>
+                        <td><a href="#">{{ session }}</a></td>
                         <td>{{ session.dateDebut | date("d/m/Y") }}</td>
                         <td>{{ session.dateFin | date("d/m/Y") }}</td>
-                        <td>nb/{{ session.nombrePlaces }}</td>
+                        <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
                         <td>
                             <a href="#"><i class="fa-solid fa-trash"></i></a>
                         </td>

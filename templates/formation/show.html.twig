@@ -4,7 +4,7 @@
 
 {% block body %}
     {% if formation %}
-        <h1>{{ formation.libelle }}</h1>
+        <h1>{{ formation }}</h1>
         <p><i>Voici les différentes sessions de cette formation</i></p>
         {% if sessions %}
             <table>
@@ -26,7 +26,7 @@
                             {% else %}
                                 <td>COMPLET</td>
                             {% endif %}
-                            <td><a href="#">{{ session.libelle }}</a></td>
+                            <td><a href="#">{{ session }}</a></td>
                             <td>{{ session.dateDebut | date("d/m/Y") }}</td>
                             <td>{{ session.dateFin | date("d/m/Y") }}</td>
                             <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
