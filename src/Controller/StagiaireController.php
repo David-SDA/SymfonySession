@@ -2,10 +2,9 @@
 
 namespace App\Controller;
 
-use App\Entity\Session;
 use App\Entity\Stagiaire;
 use App\Repository\SessionRepository;
-use Doctrine\ORM\EntityManagerInterface;
+use App\Repository\StagiaireRepository;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -13,16 +12,17 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 class StagiaireController extends AbstractController
 {
     #[Route('/stagiaire', name: 'app_stagiaire')]
-    public function index(EntityManagerInterface $entityManager): Response
+    public function index(StagiaireRepository $stagiaireRepository): Response
     {
-        $stagiaires = $entityManager->getRepository(Stagiaire::class)->findBy([], ["nom" => "ASC"]);
+        /* Trouver touts les stagiaires */
+        $stagiaires = $stagiaireRepository->findBy([], ["nom" => "ASC"]);
         return $this->render('stagiaire/index.html.twig', [
             'stagiaires' => $stagiaires
         ]);
     }
 
     #[Route('stagiaire/{id}', name: 'show_stagiaire')]
-    public function show(SessionRepository $sr, Stagiaire $stagiaire, EntityManagerInterface $entityManager):Response{
+    public function show(SessionRepository $sessionRepository, Stagiaire $stagiaire): Response{
         return $this->render('stagiaire/show.html.twig', [
             'stagiaire' => $stagiaire,
         ]);
