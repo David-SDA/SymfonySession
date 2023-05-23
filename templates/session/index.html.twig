@@ -21,7 +21,7 @@
                 {% for session in sessions %}
                     <tr>
                         <td><i>faire la disponibilité(comparaison nb inscrit et nb places)</i></td>
-                        <td><a href="#">{{ session.formation.libelle }}</a></td>
+                        <td><a href="{{ path('show_formation', {'id' : session.formation.id}) }}">{{ session.formation.libelle }}</a></td>
                         <td><a href="#">{{ session.libelle }}</a></td>
                         <td>{{ session.dateDebut | date("d/m/Y") }}</td>
                         <td>{{ session.dateFin | date("d/m/Y") }}</td>
