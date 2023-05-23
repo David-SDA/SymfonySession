@@ -25,7 +25,7 @@
                         <td><a href="#">{{ session.libelle }}</a></td>
                         <td>{{ session.dateDebut | date("d/m/Y") }}</td>
                         <td>{{ session.dateFin | date("d/m/Y") }}</td>
-                        <td>nb/{{ session.nombrePlaces }}</td>
+                        <td>{{ session.stagiaires | length }}/{{ session.nombrePlaces }}</td>
                         <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
                     </tr>
                 {% endfor %}

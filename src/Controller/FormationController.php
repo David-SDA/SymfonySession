@@ -15,10 +15,8 @@ class FormationController extends AbstractController
     public function index(EntityManagerInterface $entityManager): Response
     {
         $formations = $entityManager->getRepository(Formation::class)->findBy([], ["libelle" => "ASC"]);
-        $nombreSessions = $entityManager->getRepository(Session::class)->getNombreSessionsDansFormation(1);
         return $this->render('formation/index.html.twig', [
             'formations' => $formations,
-            'nombreSession' => $nombreSessions
         ]);
     }
 

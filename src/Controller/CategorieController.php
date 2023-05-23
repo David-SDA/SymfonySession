@@ -13,9 +13,9 @@ class CategorieController extends AbstractController
     #[Route('/categorie', name: 'app_categorie')]
     public function index(EntityManagerInterface $entityManager): Response
     {
-        $formations = $entityManager->getRepository(Categorie::class)->findBy([], ["libelle" => "ASC"]);
+        $categories = $entityManager->getRepository(Categorie::class)->findBy([], ["libelle" => "ASC"]);
         return $this->render('categorie/index.html.twig', [
-            'categories' => $formations,
+            'categories' => $categories,
         ]);
     }
 }
