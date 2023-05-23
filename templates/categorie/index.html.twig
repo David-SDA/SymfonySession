@@ -1,7 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello CategorieController!{% endblock %}
+{% block title %}Catégories{% endblock %}
 
 {% block body %}
-
+    <h1>LISTE DES CATÉGORIE</h1>
+    {% if categories %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Catégorie</th>
+                    <th>Modules</th>
+                    <th>Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for categorie in categories %}
+                    <tr>
+                        <td><a href="#">{{ categorie.libelle }}</a></td>
+                        <td><i>nb de modules</i></td>
+                        <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
 {% endblock %}
