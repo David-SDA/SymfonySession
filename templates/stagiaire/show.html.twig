@@ -37,7 +37,7 @@
                         {% else %}
                             <td>COMPLET</td>
                         {% endif %}
-                        <td><a href="{{path('show_formation', { id: session.formation.id })}}">{{ session.formation }}</a></td>
+                        <td><a href="{{ path('show_formation', { id: session.formation.id }) }}">{{ session.formation }}</a></td>
                         <td><a href="#">{{ session }}</a></td>
                         <td>{{ session.dateDebut | date("d/m/Y") }}</td>
                         <td>{{ session.dateFin | date("d/m/Y") }}</td>

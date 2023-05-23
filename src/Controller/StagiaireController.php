@@ -23,6 +23,7 @@ class StagiaireController extends AbstractController
 
     #[Route('stagiaire/{id}', name: 'show_stagiaire')]
     public function show(SessionRepository $sessionRepository, Stagiaire $stagiaire): Response{
+        
         return $this->render('stagiaire/show.html.twig', [
             'stagiaire' => $stagiaire,
         ]);
