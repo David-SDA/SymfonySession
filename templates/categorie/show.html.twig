@@ -3,10 +3,9 @@
 {% block title %}Détails d'une catégorie{% endblock %}
 
 {% block body %}
-
     {% if categorie %}
-        
-        <h1>{{ categorie }}</h1>
+        <h1>{{ categorie }} <a href="#"><i class="fa-solid fa-pen-to-square"></i></a></h1>
+        <a href="#">AJOUTER UN MODULE</a>
         {% if categorie.modules %}
             
             <table>
@@ -27,9 +26,6 @@
                     {% endfor %}
                 </tbody>
             </table>
-
         {% endif %}
-
     {% endif %}
-
 {% endblock body %}

@@ -6,7 +6,7 @@
 
     {% if session %}
 
-        <h1>{{ session }}</h1>
+        <h1>{{ session }} <a href="#"><i class="fa-solid fa-pen-to-square"></i></a></h1>
         <div>
             <h2><i>Détails</i></h2>
             <p><b>Période : </b>{{ session.dateDebut | date("d/m/Y") }} - {{ session.dateFin | date("d/m/Y") }}</p>
