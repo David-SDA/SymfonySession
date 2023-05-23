@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails d'une catégorie{% endblock %}
+
+{% block body %}
+
+    {% if categorie %}
+        
+        <h1>{{ categorie }}</h1>
+        {% if categorie.modules %}
+            
+            <table>
+                <thead>
+                    <tr>
+                        <td>Module</td>
+                        <td>Sessions</td>
+                        <td>Supprimer</td>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for module in categorie.modules %}
+                        <tr>
+                            <td><a href="">{{ module }}</a></td>
+                            <td>{{ module.sessionModules | length }}</td>
+                            <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+
+        {% endif %}
+
+    {% endif %}
+
+{% endblock body %}

@@ -16,8 +16,8 @@
             <tbody>
                 {% for categorie in categories %}
                     <tr>
-                        <td><a href="#">{{ categorie }}</a></td>
-                        <td><i>nb de modules</i></td>
+                        <td><a href="{{ path('show_categorie', { 'id' : categorie.id }) }}">{{ categorie }}</a></td>
+                        <td>{{ categorie.modules | length }}</td>
                         <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
                     </tr>
                 {% endfor %}
