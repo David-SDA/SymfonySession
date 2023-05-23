@@ -21,4 +21,13 @@ class FormationController extends AbstractController
             'nombreSession' => $nombreSessions
         ]);
     }
+
+    #[Route('/formation/{id}', name: 'show_formation')]
+    public function show(Formation $formation, EntityManagerInterface $entityManager): Response{
+        $sessions = $entityManager->getRepository(Session::class)->findBy(["formation" => $formation->getId()], ["dateDebut" => "ASC"]);
+        return $this->render('formation/show.html.twig',[
+            'formation' => $formation,
+            'sessions' => $sessions
+        ]);
+    }
 }
