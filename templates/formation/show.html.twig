@@ -6,7 +6,11 @@
     {% if formation %}
         <h1>{{ formation }} <a href="#"><i class="fa-solid fa-pen-to-square"></i></a></h1>
         <p><i>Voici les différentes sessions de cette formation</i></p>
+
+        {# Si on a bien des sessions #}
         {% if sessions %}
+            {# On crée un tableau pour les sessions en cours #}
+            <h2>SESSIONS EN COURS</h2>
             <table>
                 <thead>
                     <tr>
@@ -19,22 +23,102 @@
                     </tr>
                 </thead>
                 <tbody>
+                    {# Pour chaque session #}
                     {% for session in sessions %}
-                        <tr>
-                            {% if session.stagiaires | length < session.nombrePlaces %}
-                                <td>DISPONIBLE</td>
-                            {% else %}
-                                <td>COMPLET</td>
-                            {% endif %}
-                            <td><a href="{{ path('show_session', { 'id' : session.id }) }}">{{ session }}</a></td>
-                            <td>{{ session.dateDebut | date("d/m/Y") }}</td>
-                            <td>{{ session.dateFin | date("d/m/Y") }}</td>
-                            <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
-                            <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
-                        </tr>
+                        {# On vérifie si la date de début est aujourd'hui ou est avant aujourd'hui
+                           ET aussi si la date de fin est aujourd'hui ou est après aujourd'hui #}
+                        {% if (session.dateDebut | date("Y-m-d")) <= ("now" | date("Y-m-d")) and (session.dateFin | date("Y-m-d")) >= ("now" | date("Y-m-d")) %}
+                            <tr>
+                                {% if session.stagiaires | length < session.nombrePlaces %}
+                                    <td>DISPONIBLE</td>
+                                {% else %}
+                                    <td>COMPLET</td>
+                                {% endif %}
+                                <td><a href="{{ path('show_session', { 'id' : session.id }) }}">{{ session }}</a></td>
+                                <td>{{ session.dateDebut | date("d/m/Y") }}</td>
+                                <td>{{ session.dateFin | date("d/m/Y") }}</td>
+                                <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
+                                <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                            </tr>
+                        {% endif %}
                     {% endfor %}
                 </tbody>
             </table>
+
+            {# On crée un tableau pour les prochaines sessions #}
+            <h2>PROCHAINES SESSIONS</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Disponibilité</th>
+                        <th>Session</th>
+                        <th>Date de début</th>
+                        <th>Date de fin</th>
+                        <th>Inscrits</th>
+                        <th>Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {# Pour chaque session #}
+                    {% for session in sessions %}
+                        {# On vérifie que la date de début est après aujourd'hui #}
+                        {% if (session.dateDebut | date("Y-m-d")) > ("now" | date("Y-m-d")) %}
+                            <tr>
+                                {% if session.stagiaires | length < session.nombrePlaces %}
+                                    <td>DISPONIBLE</td>
+                                {% else %}
+                                    <td>COMPLET</td>
+                                {% endif %}
+                                <td><a href="{{ path('show_session', { 'id' : session.id }) }}">{{ session }}</a></td>
+                                <td>{{ session.dateDebut | date("d/m/Y") }}</td>
+                                <td>{{ session.dateFin | date("d/m/Y") }}</td>
+                                <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
+                                <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+
+            {# On crée un tableau pour les sessions terminées #}
+            <h2>SESSIONS TERMINÉES</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Disponibilité</th>
+                        <th>Session</th>
+                        <th>Date de début</th>
+                        <th>Date de fin</th>
+                        <th>Inscrits</th>
+                        <th>Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {# Pour chaque session #}
+                    {% for session in sessions %}
+                        {# On vérifie si la date de fin est avant aujourd'hui #}
+                        {% if (session.dateFin | date("Y-m-d")) < ("now" | date("Y-m-d")) %}
+                            <tr>
+                                {% if session.stagiaires | length < session.nombrePlaces %}
+                                    <td>DISPONIBLE</td>
+                                {% else %}
+                                    <td>COMPLET</td>
+                                {% endif %}
+                                <td><a href="{{ path('show_session', { 'id' : session.id }) }}">{{ session }}</a></td>
+                                <td>{{ session.dateDebut | date("d/m/Y") }}</td>
+                                <td>{{ session.dateFin | date("d/m/Y") }}</td>
+                                <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
+                                <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                                
+                            </tr>
+                        {% endif %}
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>Il n'y a pas de sessions dans cette formation</p>
         {% endif %}
+    {% else %}
+        <p>Il n'y a pas de formation</p>
     {% endif %}
 {% endblock %}
