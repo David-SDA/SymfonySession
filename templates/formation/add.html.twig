@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {# Si edit existe, c'est que l'on veut éditer et on adapte le titre #}
+    {% if edit %}
+        Éditer une formation
+    {% else %}
+        Ajouter une formation
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {# Si edit existe, c'est que l'on veut éditer et on adapte l'affichage #}
+    {% if edit %}
+        <h1>Éditer une formation</h1>
+    {% else %}
+        <h1>Ajouter une formation</h1>
+    {% endif %}
+
+    {{ form_start(formAddFormation) }}
+        {{ form_row(formAddFormation.libelle, {'label' : 'Nom de la formation :'}) }}
+        {# Si edit existe, c'est que l'on veut éditer et on adapte le texte dans le bouton de submit #}
+        {% if edit %}
+            {{ form_row(formAddFormation.submit, {'label' : 'MODIFIER LA FORMATION'}) }}
+        {% else %}
+            {{ form_row(formAddFormation.submit, {'label' : 'AJOUTER LA FORMATION'}) }}
+        {% endif %}
+    {{ form_end(formAddFormation) }}
+
+{% endblock %}

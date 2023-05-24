@@ -3,9 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Formation;
+use App\Form\FormationType;
 use App\Repository\FormationRepository;
 use App\Repository\SessionRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -18,6 +21,32 @@ class FormationController extends AbstractController
         $formations = $formationRepository->findBy([], ["libelle" => "ASC"]);
         return $this->render('formation/index.html.twig', [
             'formations' => $formations,
+        ]);
+    }
+
+
+    #[Route('formation/add', name: 'add_formation')]
+    #[Route('/formation/{id}/edit', name: 'edit_formation')]
+    public function add(EntityManagerInterface $entityManager, Formation $formation = null, Request $request): Response{
+        
+        /* Si la formation n'existe pas, on le crée */
+        if(!$formation){
+            $formation = new Formation();
+        }
+        
+        $form = $this->createForm(FormationType::class, $formation); // On crée le formulaire
+        $form->handleRequest($request); // Inspecte la requête
+        if($form->isSubmitted() && $form->isValid()){
+            $formation = $form->getData(); // On récupère les données
+            $entityManager->persist($formation); // Équivalent du prepare
+            $entityManager->flush(); // Équivalent du execute
+
+            return $this->redirectToRoute("app_formation");
+        }
+
+        return $this->render('formation/add.html.twig', [
+            'formAddFormation' => $form->createView(),
+            'edit' => $formation->getId()
         ]);
     }
 
