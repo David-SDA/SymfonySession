@@ -18,7 +18,6 @@
                         <td>Date de fin</td>
                         <td>Inscrits</td>
                         <td>Jours du module</td>
-                        <td>Supprimer</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -35,7 +34,6 @@
                             <td>{{ sessionModule.session.dateFin | date("d/m/Y") }}</td>
                             <td>{{ sessionModule.session.stagiaires | length }} / {{ sessionModule.session.nombrePlaces }}</td>
                             <td>{{ sessionModule.nombreJours }}</td>
-                            <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
                         </tr>
                     {% endfor %}
                 </tbody>
