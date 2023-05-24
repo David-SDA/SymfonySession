@@ -49,14 +49,14 @@
                     <thead>
                         <tr>
                             <td>Stagiaire</td>
-                            <td>Supprimer</td>
+                            <td>Désinscrire</td>
                         </tr>
                     </thead>
                     <tbody>
                         {% for stagiaire in session.stagiaires %}
                             <tr>
                                 <td><a href="{{ path('show_stagiaire', { 'id' : stagiaire.id }) }}">{{ stagiaire }}</a></td>
-                                <td><a href="#"><i class="fa-solid fa-trash"></i></a></td>
+                                <td><a href="#"><i class="fa-solid fa-xmark"></i></a></td>
                             </tr>
                         {% endfor %}
                     </tbody>
