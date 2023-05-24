@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>LISTE DES STAGIAIRES</h1>
-    <a href="#">AJOUTER UN STAGIAIRE</a>
+    <a href="{{ path('add_stagiaire') }}">AJOUTER UN STAGIAIRE</a>
     {% if stagiaires %}
         <table>
             <thead>
