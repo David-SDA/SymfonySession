@@ -37,7 +37,7 @@ class ModuleController extends AbstractController
             $entityManager->persist($module); // Équivalent du prepare
             $entityManager->flush(); // Équivalent du execute
 
-            return $this->redirectToRoute("app_module");
+            return $this->redirectToRoute("app_categorie");
         }
 
         return $this->render('module/add.html.twig', [
