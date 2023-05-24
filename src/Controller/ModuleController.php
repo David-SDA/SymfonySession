@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Module;
 use App\Form\ModuleType;
-use App\Entity\Categorie;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,9 +21,9 @@ class ModuleController extends AbstractController
     }
 
 
-    #[Route('module/add/{id}', name: 'add_module')]
+    #[Route('module/add', name: 'add_module')]
     #[Route('/module/{id}/edit', name: 'edit_module')]
-    public function add(EntityManagerInterface $entityManager, Module $module = null, Categorie $categorie, Request $request): Response{
+    public function add(EntityManagerInterface $entityManager, Module $module = null, Request $request): Response{
         
         /* Si le module n'existe pas, on le crée */
         if(!$module){
@@ -43,7 +42,6 @@ class ModuleController extends AbstractController
 
         return $this->render('module/add.html.twig', [
             'formAddModule' => $form->createView(),
-            'categorie' => $categorie,
             'edit' => $module->getId()
         ]);
     }
