@@ -47,6 +47,15 @@ class ModuleController extends AbstractController
     }
 
 
+    #[Route('/module/{id}/delete', name : 'delete_module')]
+    public function delete(EntityManagerInterface $entityManager, Module $module = null): Response{
+        $entityManager->remove($module);
+        $entityManager->flush();
+
+        return $this->redirectToRoute("app_categorie");
+    }
+
+
     #[Route('/module/{id}', name: 'show_module')]
     public function show(Module $module): Response{
 
