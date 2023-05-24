@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Session;
 use App\Entity\Stagiaire;
 use App\Form\StagiaireType;
 use App\Repository\StagiaireRepository;
@@ -58,6 +59,12 @@ class StagiaireController extends AbstractController
         return $this->redirectToRoute("app_stagiaire");
     }
 
+    #[Route('stagiaire/{id}/unsubscribe/{id_session}', name : 'unsubscribe_stagiaire')]
+    public function unsubscribe(EntityManagerInterface $entityManager, Session $session = null): Response{
+        $session->getStagiaires()->remove();
+        $entityManager->flush();
+        return $this->redirectToRoute("app_stagiaire");
+    }
 
     #[Route('stagiaire/{id}', name: 'show_stagiaire')]
     public function show(Stagiaire $stagiaire): Response{
