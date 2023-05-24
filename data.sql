@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS `categorie` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(30) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table symfonysession.categorie : ~2 rows (environ)
 /*!40000 ALTER TABLE `categorie` DISABLE KEYS */;
@@ -39,7 +39,7 @@ CREATE TABLE IF NOT EXISTS `doctrine_migration_versions` (
   PRIMARY KEY (`version`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
--- Listage des données de la table symfonysession.doctrine_migration_versions : ~1 rows (environ)
+-- Listage des données de la table symfonysession.doctrine_migration_versions : ~0 rows (environ)
 /*!40000 ALTER TABLE `doctrine_migration_versions` DISABLE KEYS */;
 INSERT INTO `doctrine_migration_versions` (`version`, `executed_at`, `execution_time`) VALUES
 	('DoctrineMigrations\\Version20230519094456', '2023-05-19 11:45:49', 2335);
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS `formation` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `libelle` varchar(70) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table symfonysession.formation : ~2 rows (environ)
 /*!40000 ALTER TABLE `formation` DISABLE KEYS */;
@@ -89,7 +89,7 @@ CREATE TABLE IF NOT EXISTS `module` (
   PRIMARY KEY (`id`),
   KEY `IDX_C242628BCF5E72D` (`categorie_id`),
   CONSTRAINT `FK_C242628BCF5E72D` FOREIGN KEY (`categorie_id`) REFERENCES `categorie` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table symfonysession.module : ~5 rows (environ)
 /*!40000 ALTER TABLE `module` DISABLE KEYS */;
@@ -112,12 +112,12 @@ CREATE TABLE IF NOT EXISTS `session` (
   PRIMARY KEY (`id`),
   KEY `IDX_D044D5D45200282E` (`formation_id`),
   CONSTRAINT `FK_D044D5D45200282E` FOREIGN KEY (`formation_id`) REFERENCES `formation` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 -- Listage des données de la table symfonysession.session : ~4 rows (environ)
 /*!40000 ALTER TABLE `session` DISABLE KEYS */;
 INSERT INTO `session` (`id`, `libelle`, `nombre_places`, `date_debut`, `date_fin`, `formation_id`) VALUES
-	(1, 'Strasbourg - DWWM1', 3, '2023-03-13 08:30:00', '2023-05-27 17:00:00', 1),
+	(1, 'Strasbourg - DWWM1', 3, '2023-03-13 00:00:00', '2023-05-27 00:00:00', 1),
 	(2, 'Strasbourg - DWWM', 13, '2022-05-22 14:07:44', '2023-02-22 14:07:50', 1),
 	(3, 'Strasbourg - DWWM3', 16, '2024-01-22 14:08:33', '2024-09-22 14:08:41', 1),
 	(4, 'Colmar - Secrétaire', 20, '2022-09-14 09:20:18', '2023-09-15 07:20:32', 2);
@@ -163,6 +163,7 @@ INSERT INTO `session_stagiaire` (`session_id`, `stagiaire_id`) VALUES
 	(1, 1),
 	(1, 3),
 	(2, 2),
+	(3, 1),
 	(4, 4),
 	(4, 5);
 /*!40000 ALTER TABLE `session_stagiaire` ENABLE KEYS */;
@@ -178,9 +179,9 @@ CREATE TABLE IF NOT EXISTS `stagiaire` (
   `email` varchar(50) COLLATE utf8mb4_unicode_ci NOT NULL,
   `telephone` varchar(20) COLLATE utf8mb4_unicode_ci NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysession.stagiaire : ~5 rows (environ)
+-- Listage des données de la table symfonysession.stagiaire : ~0 rows (environ)
 /*!40000 ALTER TABLE `stagiaire` DISABLE KEYS */;
 INSERT INTO `stagiaire` (`id`, `nom`, `prenom`, `sexe`, `date_naissance`, `ville`, `email`, `telephone`) VALUES
 	(1, 'Nom1', 'Prenom1', 'Homme', '2004-02-12 03:14:17', 'Strasbourg', 'email1@email1.com', '0101010101'),
@@ -202,7 +203,7 @@ CREATE TABLE IF NOT EXISTS `user` (
   UNIQUE KEY `UNIQ_8D93D649E7927C74` (`email`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
--- Listage des données de la table symfonysession.user : ~1 rows (environ)
+-- Listage des données de la table symfonysession.user : ~0 rows (environ)
 /*!40000 ALTER TABLE `user` DISABLE KEYS */;
 INSERT INTO `user` (`id`, `email`, `nom_complet`, `roles`, `password`, `is_verified`) VALUES
 	(3, 'personne1@email.com', 'personne 1', '[]', '$2y$13$j5vNI6VGgitvk9BBSewNPeCk.Ma2wz8pQBcEHMGAryvp7IpGPmLgK', 1);
