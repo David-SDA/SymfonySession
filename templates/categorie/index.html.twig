@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>LISTE DES CATÉGORIES</h1>
-    <a href="#">AJOUTER UNE CATÉGORIE</a>
+    <a href="{{ path('add_categorie') }}">AJOUTER UNE CATÉGORIE</a>
     {% if categories %}
         <table>
             <thead>

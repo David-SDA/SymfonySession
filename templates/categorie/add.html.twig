@@ -1,0 +1,30 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {# Si edit existe, c'est que l'on veut éditer et on adapte le titre #}
+    {% if edit %}
+        Éditer une catégorie
+    {% else %}
+        Ajouter une catégorie
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    {# Si edit existe, c'est que l'on veut éditer et on adapte l'affichage #}
+    {% if edit %}
+        <h1>Éditer une catégorie</h1>
+    {% else %}
+        <h1>Ajouter une catégorie</h1>
+    {% endif %}
+
+    {{ form_start(formAddCategorie) }}
+        {{ form_row(formAddCategorie.libelle, {'label' : 'Nom de la catégorie :'}) }}
+        {# Si edit existe, c'est que l'on veut éditer et on adapte le texte dans le bouton de submit #}
+        {% if edit %}
+            {{ form_row(formAddCategorie.submit, {'label' : 'MODIFIER LA CATÉGORIE'}) }}
+        {% else %}
+            {{ form_row(formAddCategorie.submit, {'label' : 'AJOUTER LA CATÉGORIE'}) }}
+        {% endif %}
+    {{ form_end(formAddCategorie) }}
+
+{% endblock %}
