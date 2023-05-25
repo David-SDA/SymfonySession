@@ -2,4 +2,54 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+}
+
+/**************************/
+/* La barre de navigation */
+/**************************/
+nav{
+    background-color: #4f4f4f;
+    height: 8vh;
+    display: flex;
+    align-items: center;
+}
+nav ul{
+    display: flex;
+    list-style-type: none;
+}
+nav a{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    text-decoration: none;
+    height: 8vh;
+    text-align: center;
+    font-weight: 500;
+    font-size: 1.5em;
+    padding: 0 2vw;
+}
+nav a:hover{
+    background-color: #7c9c85;
+}
+
+/*******************************************************************/
+/* La barre de navigation en fonction de si on est connecté ou pas */
+/*******************************************************************/
+.connecte{
+    justify-content: space-between;
+}
+.deconnecte{
+    justify-content: center;
+}
+
+/*******************************/
+/* Le lien pour se deconnecter */
+/*******************************/
+.texteDeconnection{
+    color: #ff5555;
+}
+.texteDeconnection:hover{
+    color: #fff;
 }
