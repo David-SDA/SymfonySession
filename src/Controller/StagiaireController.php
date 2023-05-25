@@ -7,6 +7,7 @@ use App\Entity\Stagiaire;
 use App\Form\StagiaireType;
 use App\Repository\StagiaireRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Mapping\Entity;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -59,11 +60,14 @@ class StagiaireController extends AbstractController
         return $this->redirectToRoute("app_stagiaire");
     }
 
-    #[Route('stagiaire/{id}/unsubscribe/{id_session}', name : 'unsubscribe_stagiaire')]
-    public function unsubscribe(EntityManagerInterface $entityManager, Session $session = null): Response{
-        $session->getStagiaires()->remove();
+    #[Route('stagiaire/{id}/unsubscribe/{session_id}', name : 'unsubscribe_stagiaire')]
+    public function unsubscribe(EntityManagerInterface $entityManager, Stagiaire $id, Session $session_id): Response{
+        $session_id->removeStagiaire($id);
+        $id->removeSession($session_id);
         $entityManager->flush();
-        return $this->redirectToRoute("app_stagiaire");
+        return $this->redirectToRoute("show_session", [
+            'id' => $session_id->getId()
+        ]);
     }
 
     #[Route('stagiaire/{id}', name: 'show_stagiaire')]
