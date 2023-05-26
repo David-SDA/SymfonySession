@@ -14,7 +14,7 @@
         </div>
         <div>
             <h2><i>PROGRAMME</i></h2>
-            {% if session.sessionModules %}
+            {% if session.sessionModules | length %}
                 <table>
                     <thead>
                         <tr>
@@ -35,11 +35,13 @@
                         {% endfor %}
                     </tbody>
                 </table>
+            {% else %}
+                <p><i>Pas de programme pour l'instant</i></p>
             {% endif %}
         </div>
         <div>
             <h2><i>MODULES AJOUTABLES</i></h2>
-            {% if modulesPasDansSession %}
+            {% if modulesPasDansSession | length %}
                 <table>
                     <thead>
                         <tr>
@@ -60,11 +62,13 @@
                         {% endfor %}
                     </tbody>
                 </table>
+            {% else %}
+                <p><i>Pas de modules ajoutables disponible</i></p>
             {% endif %}
         </div>
         <div>
             <h2><i>STAGIAIRES INSCRITS</i></h2>
-            {% if session.stagiaires %}
+            {% if session.stagiaires | length %}
                 <table>
                     <thead>
                         <tr>
@@ -81,11 +85,13 @@
                         {% endfor %}
                     </tbody>
                 </table>
+            {% else %}
+                <p><i>Pas de stagiaire inscrits pour l'instant</i></p>
             {% endif %}
         </div>
         <div>
             <h2><i>STAGIAIRES AJOUTABLES</i></h2>
-            {% if stagiairePasDansSession %}
+            {% if stagiairePasDansSession | length %}
                 <table>
                     <thead>
                         <tr>
@@ -102,6 +108,8 @@
                         {% endfor %}
                     </tbody>
                 </table>
+            {% else %}
+                <p><i>Pas de stagiaires ajoutables disponible</i></p>
             {% endif %}
         </div>
     {% endif %}
