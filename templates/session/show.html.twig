@@ -103,7 +103,7 @@
                         {% for stagiaire in stagiairePasDansSession %}
                             <tr>
                                 <td>{{ stagiaire }}</td>
-                                <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                                <td><a href="{{ path('addStagiaire_session', { 'id' : session.id, 'stagiaire_id' : stagiaire.id }) }}"><i class="fa-solid fa-plus"></i></a></td>
                             </tr>
                         {% endfor %}
                     </tbody>
