@@ -15,7 +15,7 @@
             <p><b>Nombre total de modules : </b>{{ session.sessionModules | length }}</p>
         </div>
         <div>
-            <h2><i>Programme</i></h2>
+            <h2><i>PROGRAMME</i></h2>
             {% if session.sessionModules %}
                 <table>
                     <thead>
@@ -40,10 +40,32 @@
             {% endif %}
         </div>
         <div>
-            <h2><i>Modules ajoutables</i></h2>
+            <h2><i>MODULES AJOUTABLES</i></h2>
+            {% if modulesPasDansSession %}
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Module</td>
+                            <td>Catégorie</td>
+                            <td>Jours</td>
+                            <td>Ajouter</td>
+                        </tr>
+                    </thead>
+                </table>
+                <tbody>
+                    {% for modulePasDansSession in modulesPasDansSession %}
+                        <tr>
+                            <td>{{ modulesPasDansSession }}</td>
+                            <td>{{ modulesPasDansSession.categorie }}</td>
+                            <td>jours</td>
+                            <td>ajout</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            {% endif %}
         </div>
         <div>
-            <h2><i>Stagiaires inscrit</i></h2>
+            <h2><i>STAGIAIRES INSCRITS</i></h2>
             {% if session.stagiaires %}
                 <table>
                     <thead>
@@ -64,7 +86,15 @@
             {% endif %}
         </div>
         <div>
-            <h2><i>Stagiaires ajoutables</i></h2>
+            <h2><i>STAGIAIRES AJOUTABLES</i></h2>
+            <table>
+                <thead>
+                    <tr>
+                        <td>Stagiaire</td>
+                        <td>Ajouter</td>
+                    </tr>
+                </thead>
+            </table>
         </div>
 
     {% endif %}
