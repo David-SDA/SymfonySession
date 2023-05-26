@@ -4,7 +4,6 @@ namespace App\Controller;
 
 use App\Entity\Module;
 use App\Entity\Session;
-use App\Entity\SessionModule;
 use App\Form\SessionType;
 use App\Repository\ModuleRepository;
 use App\Repository\SessionModuleRepository;
@@ -79,7 +78,6 @@ class SessionController extends AbstractController
 
     #[Route('/session/{id}', name: 'show_session')]
     public function show(Session $session, ModuleRepository $moduleRepository): Response{
-        
         /* Trouver les modules qui ne sont pas dans la session */
         $modulesPasDansSession = $moduleRepository->getModuleNonInclut($session->getId());
         return $this->render('session/show.html.twig',[

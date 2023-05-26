@@ -3,8 +3,8 @@
 namespace App\Repository;
 
 use App\Entity\Module;
-use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
+use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 
 /**
  * @extends ServiceEntityRepository<Module>
@@ -37,6 +37,27 @@ class ModuleRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+
+    public function getModuleNonInclut(int $session_id){
+        $em = $this->getEntityManager();
+        $sub = $em->createQueryBuilder();
+
+        $qb = $sub;
+
+        $qb->select('m')
+            ->from('App\Entity\Module', 'm')
+            ->leftJoin('m.sessionModules', 'pr')
+            ->where('pr.session = :id');
+        $sub = $em->createQueryBuilder();
+
+        $sub->select('mo')
+            ->from('App\Entity\Module', 'mo')
+            ->where($sub->expr()->notIn('mo.id', $qb->getDQL()))
+            ->setParameter('id', $session_id);
+        $query = $sub->getQuery();
+
+        return $query->getResult();
     }
 
 //    /**
