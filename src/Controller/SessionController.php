@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Module;
 use App\Entity\Session;
+use App\Entity\SessionModule;
 use App\Form\SessionType;
+use App\Repository\SessionModuleRepository;
 use App\Repository\SessionRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -56,6 +59,20 @@ class SessionController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute("app_session");
+    }
+
+
+    #[Route('/session/{id}/deleteModule/{module_id}', name: 'deleteModule_session')]
+    public function deleteModule(EntityManagerInterface $entityManager, SessionModuleRepository $sessionModuleRepository, Session $id, Module $module_id): Response{
+        $sessionModule = $sessionModuleRepository->findOneBy([
+            'session' => $id->getId(),
+            'module' => $module_id->getId()
+        ]);
+        $entityManager->remove($sessionModule);
+        $entityManager->flush();
+        return $this->redirectToRoute("show_session", [
+            'id' => $id->getId()
+        ]);
     }
 
 
