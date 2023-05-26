@@ -54,8 +54,8 @@
                             <tr>
                                 <td>{{ module.libelle }}</td>
                                 <td>{{ module.categorie }}</td>
-                                <td>j</td>
-                                <td>a</td>
+                                <td><input type="number" name="jours" id="jours"></td>
+                                <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
                             </tr>
                         {% endfor %}
                     </tbody>
@@ -85,14 +85,24 @@
         </div>
         <div>
             <h2><i>STAGIAIRES AJOUTABLES</i></h2>
-            <table>
-                <thead>
-                    <tr>
-                        <td>Stagiaire</td>
-                        <td>Ajouter</td>
-                    </tr>
-                </thead>
-            </table>
+            {% if stagiairePasDansSession %}
+                <table>
+                    <thead>
+                        <tr>
+                            <td>Stagiaire</td>
+                            <td>Ajouter</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for stagiaire in stagiairePasDansSession %}
+                            <tr>
+                                <td>{{ stagiaire }}</td>
+                                <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
         </div>
     {% endif %}
 {% endblock body %}

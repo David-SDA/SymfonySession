@@ -8,6 +8,7 @@ use App\Form\SessionType;
 use App\Repository\ModuleRepository;
 use App\Repository\SessionModuleRepository;
 use App\Repository\SessionRepository;
+use App\Repository\StagiaireRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -77,12 +78,14 @@ class SessionController extends AbstractController
 
 
     #[Route('/session/{id}', name: 'show_session')]
-    public function show(Session $session, ModuleRepository $moduleRepository): Response{
+    public function show(Session $session, ModuleRepository $moduleRepository, StagiaireRepository $stagiaireRepository): Response{
         /* Trouver les modules qui ne sont pas dans la session */
         $modulesPasDansSession = $moduleRepository->getModuleNonInclut($session->getId());
+        $stagiairePasDansSession = $stagiaireRepository->getStagiaireNonInscrit($session->getId());
         return $this->render('session/show.html.twig',[
             'session' => $session,
-            'modulesPasDansSession' => $modulesPasDansSession
+            'modulesPasDansSession' => $modulesPasDansSession,
+            'stagiairePasDansSession' => $stagiairePasDansSession
         ]);
     }
 }

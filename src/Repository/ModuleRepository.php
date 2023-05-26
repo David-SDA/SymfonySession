@@ -49,8 +49,8 @@ class ModuleRepository extends ServiceEntityRepository
             ->from('App\Entity\Module', 'm')
             ->leftJoin('m.sessionModules', 'pr')
             ->where('pr.session = :id');
+        
         $sub = $em->createQueryBuilder();
-
         $sub->select('mo')
             ->from('App\Entity\Module', 'mo')
             ->where($sub->expr()->notIn('mo.id', $qb->getDQL()))
