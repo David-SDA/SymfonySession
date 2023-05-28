@@ -3,43 +3,41 @@
 {% block title %}Détails d'un module{% endblock %}
 
 {% block body %}
-
-    {% if module %}
-        
-        <h1>{{ module }} <a href="{{ path('edit_module', { 'id' : module.id }) }}"><i class="fa-solid fa-pen-to-square"></i></a></h1>
-        {% if module.sessionModules %}
-            <table>
-                <thead>
-                    <tr>
-                        <td>Disponible</td>
-                        <td>Formation</td>
-                        <td>Session</td>
-                        <td>Date de début</td>
-                        <td>Date de fin</td>
-                        <td>Inscrits</td>
-                        <td>Jours du module</td>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for sessionModule in module.sessionModules %}
+    <div class="page">
+        {% if module %}
+            <h1 class="titrePage">{{ module }} <a href="{{ path('edit_module', { 'id' : module.id }) }}"><i class="fa-solid fa-pen-to-square"></i></a></h1>
+            {% if module.sessionModules %}
+                <table>
+                    <thead>
                         <tr>
-                            {% if sessionModule.session.stagiaires | length < sessionModule.session.nombrePlaces %}
-                                <td>DISPONIBLE</td>
-                            {% else %}
-                                <td>COMPLET</td>
-                            {% endif %}
-                            <td><a href="{{ path('show_formation', { 'id'  : sessionModule.session.formation.id }) }}">{{ sessionModule.session.formation }}</a></td>
-                            <td><a href="{{ path('show_session', { 'id' : sessionModule.session.id }) }}">{{ sessionModule.session }}</a></td>
-                            <td>{{ sessionModule.session.dateDebut | date("d/m/Y") }}</td>
-                            <td>{{ sessionModule.session.dateFin | date("d/m/Y") }}</td>
-                            <td>{{ sessionModule.session.stagiaires | length }} / {{ sessionModule.session.nombrePlaces }}</td>
-                            <td>{{ sessionModule.nombreJours }}</td>
+                            <td>Disponible</td>
+                            <td>Formation</td>
+                            <td>Session</td>
+                            <td>Date de début</td>
+                            <td>Date de fin</td>
+                            <td>Inscrits</td>
+                            <td>Jours du module</td>
                         </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                        {% for sessionModule in module.sessionModules %}
+                            <tr>
+                                {% if sessionModule.session.stagiaires | length < sessionModule.session.nombrePlaces %}
+                                    <td>DISPONIBLE</td>
+                                {% else %}
+                                    <td>COMPLET</td>
+                                {% endif %}
+                                <td><a href="{{ path('show_formation', { 'id'  : sessionModule.session.formation.id }) }}">{{ sessionModule.session.formation }}</a></td>
+                                <td><a href="{{ path('show_session', { 'id' : sessionModule.session.id }) }}">{{ sessionModule.session }}</a></td>
+                                <td>{{ sessionModule.session.dateDebut | date("d/m/Y") }}</td>
+                                <td>{{ sessionModule.session.dateFin | date("d/m/Y") }}</td>
+                                <td>{{ sessionModule.session.stagiaires | length }} / {{ sessionModule.session.nombrePlaces }}</td>
+                                <td>{{ sessionModule.nombreJours }}</td>
+                            </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% endif %}
         {% endif %}
-
-    {% endif %}
-
+    </div>
 {% endblock body %}

@@ -34,6 +34,13 @@ nav a:hover{
     background-color: #7c9c85;
 }
 
+/***********************/
+/* L'affichage du site */
+/***********************/
+body{
+    background-color: #dbdbdb;
+}
+
 /*******************************************************************/
 /* La barre de navigation en fonction de si on est connecté ou pas */
 /*******************************************************************/
@@ -52,4 +59,14 @@ nav a:hover{
 }
 .texteDeconnection:hover{
     color: #fff;
+}
+
+/***************************************************************/
+/* La partie principale de la page sans la barre de navigation */
+/***************************************************************/
+.page{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
 }

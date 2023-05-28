@@ -3,40 +3,42 @@
 {% block title %}Sessions{% endblock %}
 
 {% block body %}
-    <h1>LISTE DES SESSIONS</h1>
-    <a href="{{ path('add_session') }}">AJOUTER UNE SESSION</a>
-    {% if sessions %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Disponibilité</th>
-                    <th>Formation</th>
-                    <th>Session</th>
-                    <th>Date de début</th>
-                    <th>Date de fin</th>
-                    <th>Inscrits</th>
-                    <th>Supprimer</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for session in sessions %}
+    <div class="page">
+        <h1 class="titrePage">LISTE DES SESSIONS</h1>
+        <a href="{{ path('add_session') }}">AJOUTER UNE SESSION</a>
+        {% if sessions %}
+            <table>
+                <thead>
                     <tr>
-                        {% if session.stagiaires | length < session.nombrePlaces %}
-                            <td>DISPONIBLE</td>
-                        {% else %}
-                            <td>COMPLET</td>
-                        {% endif %}
-                        <td><a href="{{ path('show_formation', { 'id'  : session.formation.id }) }}">{{ session.formation }}</a></td>
-                        <td><a href="{{ path('show_session', { 'id' : session.id }) }}">{{ session }}</a></td>
-                        <td>{{ session.dateDebut | date("d/m/Y") }}</td>
-                        <td>{{ session.dateFin | date("d/m/Y") }}</td>
-                        <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
-                        {% if session.stagiaires | length == 0 and session.sessionModules | length == 0 %}
-                            <td><a href="{{ path('delete_session', { 'id' : session.id }) }}"><i class="fa-solid fa-trash"></i></a></td>
-                        {% endif %}
+                        <th>Disponibilité</th>
+                        <th>Formation</th>
+                        <th>Session</th>
+                        <th>Date de début</th>
+                        <th>Date de fin</th>
+                        <th>Inscrits</th>
+                        <th>Supprimer</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
+                </thead>
+                <tbody>
+                    {% for session in sessions %}
+                        <tr>
+                            {% if session.stagiaires | length < session.nombrePlaces %}
+                                <td>DISPONIBLE</td>
+                            {% else %}
+                                <td>COMPLET</td>
+                            {% endif %}
+                            <td><a href="{{ path('show_formation', { 'id'  : session.formation.id }) }}">{{ session.formation }}</a></td>
+                            <td><a href="{{ path('show_session', { 'id' : session.id }) }}">{{ session }}</a></td>
+                            <td>{{ session.dateDebut | date("d/m/Y") }}</td>
+                            <td>{{ session.dateFin | date("d/m/Y") }}</td>
+                            <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
+                            {% if session.stagiaires | length == 0 and session.sessionModules | length == 0 %}
+                                <td><a href="{{ path('delete_session', { 'id' : session.id }) }}"><i class="fa-solid fa-trash"></i></a></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
 {% endblock %}

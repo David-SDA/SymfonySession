@@ -10,19 +10,20 @@
 {% endblock %}
 
 {% block body %}
-    {# Si edit existe, c'est que l'on veut éditer et on adapte l'affichage #}
-    {% if edit %}
-        <h1>Éditer une session</h1>
-    {% else %}
-        <h1>Ajouter une session</h1>
-    {% endif %}
+    <div class="page">
+        {# Si edit existe, c'est que l'on veut éditer et on adapte l'affichage #}
+        {% if edit %}
+            <h1>Éditer une session</h1>
+        {% else %}
+            <h1>Ajouter une session</h1>
+        {% endif %}
 
-    {{ form_start(formAddSession) }}
-        {{ form_row(formAddSession.libelle, {'label' : 'Nom de la session :'}) }}
-        {{ form_row(formAddSession.nombrePlaces, {'label' : 'Nombre de places :'}) }}
-        {{ form_row(formAddSession.dateDebut, {'label' : 'Date de début :'}) }}
-        {{ form_row(formAddSession.dateFin, {'label' : 'Date de fin :'}) }}
-        {{ form_row(formAddSession.formation, {'label' : 'Formation :'}) }}
-    {{ form_end(formAddSession) }}
-
+        {{ form_start(formAddSession) }}
+            {{ form_row(formAddSession.libelle, {'label' : 'Nom de la session :'}) }}
+            {{ form_row(formAddSession.nombrePlaces, {'label' : 'Nombre de places :'}) }}
+            {{ form_row(formAddSession.dateDebut, {'label' : 'Date de début :'}) }}
+            {{ form_row(formAddSession.dateFin, {'label' : 'Date de fin :'}) }}
+            {{ form_row(formAddSession.formation, {'label' : 'Formation :'}) }}
+        {{ form_end(formAddSession) }}
+    </div>
 {% endblock %}

@@ -3,36 +3,38 @@
 {% block title %}Stagiaires{% endblock %}
 
 {% block body %}
-    <h1>LISTE DES STAGIAIRES</h1>
-    <a href="{{ path('add_stagiaire') }}">AJOUTER UN STAGIAIRE</a>
-    {% if stagiaires %}
-        <table>
-            <thead>
-                <tr>
-                    <th>Nom complet</th>
-                    <th>Sexe</th>
-                    <th>Date de naissance</th>
-                    <th>Ville</th>
-                    <th>Email</th>
-                    <th>Téléphone</th>
-                    <th>Supprimer</th>
-                </tr>
-            </thead>
-            <tbody>
-                {% for stagiaire in stagiaires %}
+    <div class="page">
+        <h1 class="titrePage">LISTE DES STAGIAIRES</h1>
+        <a href="{{ path('add_stagiaire') }}">AJOUTER UN STAGIAIRE</a>
+        {% if stagiaires %}
+            <table>
+                <thead>
                     <tr>
-                        <td><a href="{{ path('show_stagiaire', { 'id' : stagiaire.id }) }}">{{ stagiaire }}</a></td>
-                        <td>{{ stagiaire.sexe }}</td>
-                        <td>{{ stagiaire.dateNaissance | date("d/m/Y") }}</td>
-                        <td>{{ stagiaire.ville }}</td>
-                        <td>{{ stagiaire.email }}</td>
-                        <td>{{ stagiaire.telephone }}</td>
-                        {% if stagiaire.sessions | length == 0 %}
-                            <td><a href="{{ path('delete_stagiaire', { 'id' : stagiaire.id }) }}"><i class="fa-solid fa-trash"></i></a></td>
-                        {% endif %}
+                        <th>Nom complet</th>
+                        <th>Sexe</th>
+                        <th>Date de naissance</th>
+                        <th>Ville</th>
+                        <th>Email</th>
+                        <th>Téléphone</th>
+                        <th>Supprimer</th>
                     </tr>
-                {% endfor %}
-            </tbody>
-        </table>
-    {% endif %}
+                </thead>
+                <tbody>
+                    {% for stagiaire in stagiaires %}
+                        <tr>
+                            <td><a href="{{ path('show_stagiaire', { 'id' : stagiaire.id }) }}">{{ stagiaire }}</a></td>
+                            <td>{{ stagiaire.sexe }}</td>
+                            <td>{{ stagiaire.dateNaissance | date("d/m/Y") }}</td>
+                            <td>{{ stagiaire.ville }}</td>
+                            <td>{{ stagiaire.email }}</td>
+                            <td>{{ stagiaire.telephone }}</td>
+                            {% if stagiaire.sessions | length == 0 %}
+                                <td><a href="{{ path('delete_stagiaire', { 'id' : stagiaire.id }) }}"><i class="fa-solid fa-trash"></i></a></td>
+                            {% endif %}
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% endif %}
+    </div>
 {% endblock %}

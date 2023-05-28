@@ -10,22 +10,23 @@
 {% endblock %}
 
 {% block body %}
-    {# Si edit existe, c'est que l'on veut éditer et on adapte l'affichage #}
-    {% if edit %}
-        <h1>Éditer un module</h1>
-    {% else %}
-        <h1>Ajouter un module</h1>
-    {% endif %}
-
-    {{ form_start(formAddModule) }}
-        {{ form_row(formAddModule.libelle, {'label' : 'Nom du module :'}) }}
-        {{ form_row(formAddModule.categorie, {'label' : 'Catégorie :' }) }}
-        {# Si edit existe, c'est que l'on veut éditer et on adapte le texte dans le bouton de submit #}
+    <div class="page">
+        {# Si edit existe, c'est que l'on veut éditer et on adapte l'affichage #}
         {% if edit %}
-            {{ form_row(formAddModule.submit, {'label' : 'MODIFIER LE MODULE'}) }}
+            <h1>Éditer un module</h1>
         {% else %}
-            {{ form_row(formAddModule.submit, {'label' : 'AJOUTER LE MODULE '}) }}
+            <h1>Ajouter un module</h1>
         {% endif %}
-    {{ form_end(formAddModule) }}
 
+        {{ form_start(formAddModule) }}
+            {{ form_row(formAddModule.libelle, {'label' : 'Nom du module :'}) }}
+            {{ form_row(formAddModule.categorie, {'label' : 'Catégorie :' }) }}
+            {# Si edit existe, c'est que l'on veut éditer et on adapte le texte dans le bouton de submit #}
+            {% if edit %}
+                {{ form_row(formAddModule.submit, {'label' : 'MODIFIER LE MODULE'}) }}
+            {% else %}
+                {{ form_row(formAddModule.submit, {'label' : 'AJOUTER LE MODULE '}) }}
+            {% endif %}
+        {{ form_end(formAddModule) }}
+    </div>
 {% endblock %}

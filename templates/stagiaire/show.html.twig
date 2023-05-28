@@ -3,51 +3,52 @@
 {% block title %}Détails d'un stagiaire{% endblock %}
 
 {% block body %} 
-
-    {% if stagiaire %}
-        <h1>{{ stagiaire }} <a href="{{ path('edit_stagiaire', { 'id' : stagiaire.id }) }}"><i class="fa-solid fa-pen-to-square"></i></a></h1>
-        <div>
-            <h2><i>Détails</i></h2>
-            <p><b>Sexe : </b>{{ stagiaire.sexe }}</p>
-            <p><b>Date de naissance : </b>{{ stagiaire.dateNaissance | date("d/m/Y") }}</p>
-            <p><b>Ville : </b>{{ stagiaire.ville }}</p>
-            <p><b>Email : </b>{{ stagiaire.email }}</p>
-            <p><b>Téléphone : </b>{{ stagiaire.telephone }}</p>
-        </div>
-        <div>
-            <h2><i>Sessions</i></h2>
-            {% if stagiaire.sessions %}
-            <table>
-                <thead>
-                    <tr>
-                        <th>Disponibilité</th>
-                        <th>Formation</th>
-                        <th>Session</th>
-                        <th>Date de début</th>
-                        <th>Date de fin</th>
-                        <th>Inscrits</th>
-                        <th>Désinscrire</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {% for session in stagiaire.sessions %}
-                    <tr>
-                        {% if session.stagiaires | length < session.nombrePlaces %}
-                            <td>DISPONIBLE</td>
-                        {% else %}
-                            <td>COMPLET</td>
-                        {% endif %}
-                        <td><a href="{{ path('show_formation', { 'id' : session.formation.id }) }}">{{ session.formation }}</a></td>
-                        <td><a href="{{ path('show_session', { 'id' : session.id }) }}">{{ session }}</a></td>
-                        <td>{{ session.dateDebut | date("d/m/Y") }}</td>
-                        <td>{{ session.dateFin | date("d/m/Y") }}</td>
-                        <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
-                        <td><a href="{{ path('unsubscribe_stagiaire', { 'id' : stagiaire.id, 'session_id' : session.id }) }}"><i class="fa-solid fa-xmark"></i></a></td>
-                    </tr>
-                    {% endfor %}
-                </tbody>
-            </table>
-            {% endif %}
-        </div>
-    {% endif %}
+    <div class="page">
+        {% if stagiaire %}
+            <h1 class="titrePage">{{ stagiaire }} <a href="{{ path('edit_stagiaire', { 'id' : stagiaire.id }) }}"><i class="fa-solid fa-pen-to-square"></i></a></h1>
+            <div>
+                <h2><i>Détails</i></h2>
+                <p><b>Sexe : </b>{{ stagiaire.sexe }}</p>
+                <p><b>Date de naissance : </b>{{ stagiaire.dateNaissance | date("d/m/Y") }}</p>
+                <p><b>Ville : </b>{{ stagiaire.ville }}</p>
+                <p><b>Email : </b>{{ stagiaire.email }}</p>
+                <p><b>Téléphone : </b>{{ stagiaire.telephone }}</p>
+            </div>
+            <div>
+                <h2><i>Sessions</i></h2>
+                {% if stagiaire.sessions %}
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Disponibilité</th>
+                            <th>Formation</th>
+                            <th>Session</th>
+                            <th>Date de début</th>
+                            <th>Date de fin</th>
+                            <th>Inscrits</th>
+                            <th>Désinscrire</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for session in stagiaire.sessions %}
+                        <tr>
+                            {% if session.stagiaires | length < session.nombrePlaces %}
+                                <td>DISPONIBLE</td>
+                            {% else %}
+                                <td>COMPLET</td>
+                            {% endif %}
+                            <td><a href="{{ path('show_formation', { 'id' : session.formation.id }) }}">{{ session.formation }}</a></td>
+                            <td><a href="{{ path('show_session', { 'id' : session.id }) }}">{{ session }}</a></td>
+                            <td>{{ session.dateDebut | date("d/m/Y") }}</td>
+                            <td>{{ session.dateFin | date("d/m/Y") }}</td>
+                            <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
+                            <td><a href="{{ path('unsubscribe_stagiaire', { 'id' : stagiaire.id, 'session_id' : session.id }) }}"><i class="fa-solid fa-xmark"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
 {% endblock %}

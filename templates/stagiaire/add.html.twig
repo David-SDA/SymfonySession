@@ -10,21 +10,22 @@
 {% endblock %}
 
 {% block body %}
-    {# Si edit existe, c'est que l'on veut éditer et on adapte l'affichage #}
-    {% if edit %}
-        <h1>Éditer un stagiaire</h1>
-    {% else %}
-        <h1>Ajouter un stagiaire</h1>
-    {% endif %}
+    <div class="page">
+        {# Si edit existe, c'est que l'on veut éditer et on adapte l'affichage #}
+        {% if edit %}
+            <h1>Éditer un stagiaire</h1>
+        {% else %}
+            <h1>Ajouter un stagiaire</h1>
+        {% endif %}
 
-    {{ form_start(formAddStagiaire) }}
-        {{ form_row(formAddStagiaire.nom, {'label' : 'Nom :'}) }}
-        {{ form_row(formAddStagiaire.prenom, {'label' : 'Prénom :'}) }}
-        {{ form_row(formAddStagiaire.sexe, {'label' : 'Sexe :'}) }}
-        {{ form_row(formAddStagiaire.dateNaissance, {'label' : 'Date de naissance :'}) }}
-        {{ form_row(formAddStagiaire.ville, {'label' : 'Ville :'}) }}
-        {{ form_row(formAddStagiaire.email, {'label' : 'Email :'}) }}
-        {{ form_row(formAddStagiaire.telephone, {'label' : 'Téléphone :'}) }}
-    {{ form_end(formAddStagiaire) }}
-
+        {{ form_start(formAddStagiaire) }}
+            {{ form_row(formAddStagiaire.nom, {'label' : 'Nom :'}) }}
+            {{ form_row(formAddStagiaire.prenom, {'label' : 'Prénom :'}) }}
+            {{ form_row(formAddStagiaire.sexe, {'label' : 'Sexe :'}) }}
+            {{ form_row(formAddStagiaire.dateNaissance, {'label' : 'Date de naissance :'}) }}
+            {{ form_row(formAddStagiaire.ville, {'label' : 'Ville :'}) }}
+            {{ form_row(formAddStagiaire.email, {'label' : 'Email :'}) }}
+            {{ form_row(formAddStagiaire.telephone, {'label' : 'Téléphone :'}) }}
+        {{ form_end(formAddStagiaire) }}
+    </div>
 {% endblock %}
