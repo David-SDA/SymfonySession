@@ -162,3 +162,63 @@ form{
 .boutonSubmit:hover{
     transform: scale(0.9);
 }
+
+/***********************************************************************/
+/* Le texte de début de page (utile si il y a plus que juste un titre) */
+/***********************************************************************/
+.titrePage{
+    display: flex;
+    flex-direction: column;
+}
+.titrePage p{
+    margin-top: -3vh;
+    margin-bottom: 2vh;
+}
+
+/****************************************************/
+/* Les tableaux qui listent les différentes entités */
+/****************************************************/
+.tableau{
+    width: 90vw;
+    margin-top: 0.5vh;
+    margin-bottom: 2vh;
+    color: #fff;
+    border-collapse: collapse;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+}
+.tableau thead{
+    background-color: #4f4f4f;
+    border-bottom: 1px solid #fff;
+    letter-spacing: 0.05em;
+}
+.tableau th{
+    font-weight: 600;
+}
+.tableau tbody tr{
+    background-color: #757575;
+}
+.tableau tbody tr:nth-child(even){
+    background-color: #5a5a5a;
+}
+.tableau th, .tableau td{
+    padding: 10px;
+}
+.tableau .disponible{
+    background-color: #05BB72;
+    border-radius: 5px;
+    padding: 3px;
+}
+.tableau .complet{
+    background-color: #bb2e05;
+    border-radius: 5px;
+    padding: 3px;
+}
+.tableau a{
+    text-decoration: none;
+    color: #00e;
+}
+.tableau .fa-trash{
+    color: #dd2121;
+}
