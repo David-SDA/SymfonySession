@@ -186,6 +186,7 @@ form{
     border-collapse: collapse;
     border-radius: 10px;
     overflow: hidden;
+    table-layout: fixed;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
 .tableau thead{
@@ -221,4 +222,31 @@ form{
 }
 .tableau .fa-trash{
     color: #dd2121;
+}
+
+/*************************************************************************/
+/* Les boutons d'ajout qui sont principalement dans les pages de listage */
+/*************************************************************************/
+.boutonAjout{
+    background-color: #7c9c85;
+    color: #fff;
+    height: 6vh;
+    width: 20vw;
+    align-self: flex-end;
+    position: fixed;
+    margin: 2vh 5vw 0 0;
+    border-radius: 10px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2em;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    transition: all 0.5s;
+}
+.boutonAjout:hover{
+    transform: scale(0.9);
 }
