@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Formateur;
 use App\Entity\Formation;
 use App\Entity\Session;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -29,6 +30,9 @@ class SessionType extends AbstractType
             ->add('formation', EntityType::class, [
                 'class' => Formation::class,
                 'choice_label' => 'libelle'
+            ])
+            ->add('formateur', EntityType::class, [
+                'class' => Formateur::class,
             ])
             ->add('submit', SubmitType::class, [
                 'attr' => [

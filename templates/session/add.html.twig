@@ -39,6 +39,10 @@
                 {{ form_label(formAddSession.formation, 'Formation :') }}
                 {{ form_widget(formAddSession.formation) }}
             </div>
+            <div class="ligneFormulaire">
+                {{ form_label(formAddSession.formateur, 'Formateur :') }}
+                {{ form_widget(formAddSession.formateur) }}
+            </div>
             {# Si edit existe, c'est que l'on veut éditer et on adapte le texte dans le bouton de submit #}
             {% if edit %}
                 <div class="ligneSubmit">
