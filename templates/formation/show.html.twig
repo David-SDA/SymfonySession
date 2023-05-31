@@ -9,12 +9,11 @@
                 <h1>{{ formation }} <a href="{{ path('edit_formation', { 'id' : formation.id }) }}"><i class="fa-solid fa-pen-to-square"></i></a></h1>
                 <p><i>Voici les différentes sessions de cette formation</i></p>
             </div>
-
             {# Si on a bien des sessions #}
             {% if sessions %}
                 {# On crée un tableau pour les sessions en cours #}
                 <h2>SESSIONS EN COURS</h2>
-                <table>
+                <table class="tableau">
                     <thead>
                         <tr>
                             <th>Disponibilité</th>
@@ -33,9 +32,9 @@
                             {% if (session.dateDebut | date("Y-m-d")) <= ("now" | date("Y-m-d")) and (session.dateFin | date("Y-m-d")) >= ("now" | date("Y-m-d")) %}
                                 <tr>
                                     {% if session.stagiaires | length < session.nombrePlaces %}
-                                        <td>DISPONIBLE</td>
+                                        <td><p class="disponible">DISPONIBLE</p></td>
                                     {% else %}
-                                        <td>COMPLET</td>
+                                        <td><p class="complet">COMPLET</p></td>
                                     {% endif %}
                                     <td><a href="{{ path('show_session', { 'id' : session.id }) }}">{{ session }}</a></td>
                                     <td>{{ session.dateDebut | date("d/m/Y") }}</td>
@@ -43,6 +42,8 @@
                                     <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
                                     {% if session.stagiaires | length == 0 and session.sessionModules | length == 0 %}
                                         <td><a href="{{ path('delete_session', { 'id' : session.id }) }}"><i class="fa-solid fa-trash"></i></a></td>
+                                    {% else %}
+                                        <td></td>
                                     {% endif %}
                                 </tr>
                             {% endif %}
@@ -52,7 +53,7 @@
 
                 {# On crée un tableau pour les prochaines sessions #}
                 <h2>PROCHAINES SESSIONS</h2>
-                <table>
+                <table class="tableau">
                     <thead>
                         <tr>
                             <th>Disponibilité</th>
@@ -70,9 +71,9 @@
                             {% if (session.dateDebut | date("Y-m-d")) > ("now" | date("Y-m-d")) %}
                                 <tr>
                                     {% if session.stagiaires | length < session.nombrePlaces %}
-                                        <td>DISPONIBLE</td>
+                                        <td><p class="disponible">DISPONIBLE</p></td>
                                     {% else %}
-                                        <td>COMPLET</td>
+                                        <td><p class="complet">COMPLET</p></td>
                                     {% endif %}
                                     <td><a href="{{ path('show_session', { 'id' : session.id }) }}">{{ session }}</a></td>
                                     <td>{{ session.dateDebut | date("d/m/Y") }}</td>
@@ -80,6 +81,8 @@
                                     <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
                                     {% if session.stagiaires | length == 0 and session.sessionModules | length == 0 %}
                                         <td><a href="{{ path('delete_session', { 'id' : session.id }) }}"><i class="fa-solid fa-trash"></i></a></td>
+                                    {% else %}
+                                        <td></td>
                                     {% endif %}
                                 </tr>
                             {% endif %}
@@ -89,7 +92,7 @@
 
                 {# On crée un tableau pour les sessions terminées #}
                 <h2>SESSIONS TERMINÉES</h2>
-                <table>
+                <table class="tableau">
                     <thead>
                         <tr>
                             <th>Disponibilité</th>
@@ -107,9 +110,9 @@
                             {% if (session.dateFin | date("Y-m-d")) < ("now" | date("Y-m-d")) %}
                                 <tr>
                                     {% if session.stagiaires | length < session.nombrePlaces %}
-                                        <td>DISPONIBLE</td>
+                                        <td><p class="disponible">DISPONIBLE</p></td>
                                     {% else %}
-                                        <td>COMPLET</td>
+                                        <td><p class="complet">COMPLET</p></td>
                                     {% endif %}
                                     <td><a href="{{ path('show_session', { 'id' : session.id }) }}">{{ session }}</a></td>
                                     <td>{{ session.dateDebut | date("d/m/Y") }}</td>
@@ -117,6 +120,8 @@
                                     <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
                                     {% if session.stagiaires | length == 0 and session.sessionModules | length == 0 %}
                                         <td><a href="{{ path('delete_session', { 'id' : session.id }) }}"><i class="fa-solid fa-trash"></i></a></td>
+                                    {% else %}
+                                        <td></td>
                                     {% endif %}
                                 </tr>
                             {% endif %}
