@@ -102,6 +102,19 @@ form{
     margin: 2vh 0;
 }
 
+/*****************************************************/
+/* Les formulaires liés à l'ajout et la modification */
+/*****************************************************/
+.ajoutModification{
+    width: 80vw;
+    padding: 10px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 5px;
+}
+.ajoutModification{
+    margin: 2vh 0;
+}
+
 /************************************************************/
 /* Une ligne du formulaire qui contient le label et l'input */
 /************************************************************/
@@ -122,6 +135,12 @@ form{
     padding: 10px;
     border-radius: 10px;
     border: none;
+}
+
+.ligneSubmit{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
 }
 
 /***************************************************/
@@ -158,9 +177,15 @@ form{
     box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
     transition: all 0.5s;
     align-self: flex-end;
+    font-weight: 700;
+    font-size: 1.1em;
+    margin-top: 1vh;
 }
 .boutonSubmit:hover{
     transform: scale(0.9);
+}
+.grand{
+    width: 20vw;
 }
 
 /***********************************************************************/

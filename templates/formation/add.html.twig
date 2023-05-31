@@ -18,13 +18,20 @@
             <h1>Ajouter une formation</h1>
         {% endif %}
 
-        {{ form_start(formAddFormation) }}
-            {{ form_row(formAddFormation.libelle, {'label' : 'Nom de la formation :'}) }}
+        {{ form_start(formAddFormation, { 'attr' : { 'class' : 'ajoutModification' } }) }}
+            <div class="ligneFormulaire">
+                {{ form_label(formAddFormation.libelle, 'Nom de la formation :') }}
+                {{ form_widget(formAddFormation.libelle) }}
+            </div>
             {# Si edit existe, c'est que l'on veut éditer et on adapte le texte dans le bouton de submit #}
             {% if edit %}
-                {{ form_row(formAddFormation.submit, {'label' : 'MODIFIER LA FORMATION'}) }}
+                <div class="ligneSubmit">
+                    {{ form_row(formAddFormation.submit, {'label' : 'MODIFIER LA FORMATION'}) }}
+                </div>
             {% else %}
-                {{ form_row(formAddFormation.submit, {'label' : 'AJOUTER LA FORMATION'}) }}
+                <div class="ligneSubmit">
+                    {{ form_row(formAddFormation.submit, {'label' : 'AJOUTER LA FORMATION'}) }}
+                </div>
             {% endif %}
         {{ form_end(formAddFormation) }}
     </div>
