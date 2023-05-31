@@ -21,7 +21,11 @@ class ModuleType extends AbstractType
                 'class' => Categorie::class,
                 'choice_label' => 'libelle'
             ]) // On pourra rajouter une classe si besoin
-            ->add('submit', SubmitType::class)
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'boutonSubmit grand'
+                ]
+            ])
         ;
     }
 

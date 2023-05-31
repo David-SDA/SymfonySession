@@ -18,14 +18,24 @@
             <h1>Ajouter un module</h1>
         {% endif %}
 
-        {{ form_start(formAddModule) }}
-            {{ form_row(formAddModule.libelle, {'label' : 'Nom du module :'}) }}
-            {{ form_row(formAddModule.categorie, {'label' : 'Catégorie :' }) }}
+        {{ form_start(formAddModule, { 'attr' : { 'class' : 'ajoutModification' } }) }}
+            <div class="ligneFormulaire">
+                {{ form_label(formAddModule.libelle, 'Nom :') }}
+                {{ form_widget(formAddModule.libelle) }}
+            </div>
+            <div class="ligneFormulaire">
+                {{ form_label(formAddModule.categorie, 'Catégorie :') }}
+                {{ form_widget(formAddModule.categorie) }}
+            </div>
             {# Si edit existe, c'est que l'on veut éditer et on adapte le texte dans le bouton de submit #}
             {% if edit %}
-                {{ form_row(formAddModule.submit, {'label' : 'MODIFIER LE MODULE'}) }}
+                <div class="ligneSubmit">
+                    {{ form_row(formAddModule.submit, {'label' : 'MODIFIER LE MODULE'}) }}
+                </div>
             {% else %}
-                {{ form_row(formAddModule.submit, {'label' : 'AJOUTER LE MODULE '}) }}
+                <div class="ligneSubmit">
+                    {{ form_row(formAddModule.submit, {'label' : 'AJOUTER LE MODULE '}) }}
+                </div>
             {% endif %}
         {{ form_end(formAddModule) }}
     </div>
