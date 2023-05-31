@@ -18,13 +18,20 @@
             <h1>Ajouter une catégorie</h1>
         {% endif %}
 
-        {{ form_start(formAddCategorie) }}
-            {{ form_row(formAddCategorie.libelle, {'label' : 'Nom de la catégorie :'}) }}
+        {{ form_start(formAddCategorie, { 'attr' : { 'class' : 'ajoutModification' } }) }}
+            <div class="ligneFormulaire">
+                {{ form_label(formAddCategorie.libelle, 'Nom de la catégorie :') }}
+                {{ form_widget(formAddCategorie.libelle) }}
+            </div>
             {# Si edit existe, c'est que l'on veut éditer et on adapte le texte dans le bouton de submit #}
             {% if edit %}
+            <div class="ligneSubmit">
                 {{ form_row(formAddCategorie.submit, {'label' : 'MODIFIER LA CATÉGORIE'}) }}
+            </div>
             {% else %}
+            <div class="ligneSubmit">
                 {{ form_row(formAddCategorie.submit, {'label' : 'AJOUTER LA CATÉGORIE'}) }}
+            </div>
             {% endif %}
         {{ form_end(formAddCategorie) }}
     </div>

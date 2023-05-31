@@ -15,7 +15,11 @@ class CategorieType extends AbstractType
     {
         $builder
             ->add('libelle', TextType::class) // On pourra rajouter une classe si besoin
-            ->add('submit', SubmitType::class) // On pourra rajouter une classe si besoin
+            ->add('submit', SubmitType::class,[
+                'attr' => [
+                    'class' => 'boutonSubmit grand'
+                ]
+            ]) // On pourra rajouter une classe si besoin
         ;
     }
 
