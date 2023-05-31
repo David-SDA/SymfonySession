@@ -48,6 +48,11 @@ h1{
     margin: 3vh 0;
 }
 
+h3 a{
+    text-decoration: none;
+    color: #00e;
+}
+
 /******************************/
 /* Les formulaires en général */
 /******************************/
