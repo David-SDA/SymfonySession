@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {# Si edit existe, c'est que l'on veut éditer et on adapte le titre #}
+    {% if edit %}
+        Éditer un formateur
+    {% else %}
+        Ajouter un formateur
+    {% endif %}
+{% endblock %}
+
+{% block body %}
+    <div class="page">
+        {# Si edit existe, c'est que l'on veut éditer et on adapte l'affichage #}
+        {% if edit %}
+            <h1>Éditer un formateur</h1>
+        {% else %}
+            <h1>Ajouter un formateur</h1>
+        {% endif %}
+
+        {{ form_start(formAddFormateur, { 'attr' : { 'class' : 'ajoutModification' } }) }}
+            <div class="ligneFormulaire">
+                {{ form_label(formAddFormateur.nom, 'Nom :') }}
+                {{ form_widget(formAddFormateur.nom) }}
+            </div>
+            <div class="ligneFormulaire">
+                {{ form_label(formAddFormateur.prenom, 'Prénom :') }}
+                {{ form_widget(formAddFormateur.prenom) }}
+            </div>
+            
+            {# Si edit existe, c'est que l'on veut éditer et on adapte le texte dans le bouton de submit #}
+            {% if edit %}
+                <div class="ligneSubmit">
+                    {{ form_row(formAddFormateur.submit, {'label' : 'MODIFIER LE FORMATEUR'}) }}
+                </div>
+            {% else %}
+                <div class="ligneSubmit">
+                    {{ form_row(formAddFormateur.submit, {'label' : 'AJOUTER LE FORMATEUR'}) }}
+                </div>
+            {% endif %}
+        {{ form_end(formAddFormateur) }}
+    </div>
+{% endblock %}

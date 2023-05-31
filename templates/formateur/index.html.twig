@@ -5,7 +5,7 @@
 {% block body %}
     <div class="page">
         <h1 class="titrePage">LISTE DES FORMATEURS</h1>
-        <a href="#" class="boutonAjout">AJOUTER UN FORMATEUR</a>
+        <a href="{{ path('add_formateur') }}" class="boutonAjout">AJOUTER UN FORMATEUR</a>
         {% if formateurs %}
             <table class="tableau">
                 <thead>

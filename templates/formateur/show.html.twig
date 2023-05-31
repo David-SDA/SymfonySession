@@ -6,7 +6,7 @@
     <div class="page">
         {% if formateur %}
             <div class="titrePage">
-                <h1>{{ formateur }} <a href="#" class="boutonModification"><i class="fa-solid fa-pen-to-square"></i></a></h1>
+                <h1>{{ formateur }} <a href="{{ path('edit_formateur', { 'id' :formateur.id }) }}" class="boutonModification"><i class="fa-solid fa-pen-to-square"></i></a></h1>
             </div>
             <div>
                 {% if formateur.sessions %}
