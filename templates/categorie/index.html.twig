@@ -5,9 +5,9 @@
 {% block body %}
     <div class="page">
         <h1 class="titrePage">LISTE DES CATÉGORIES</h1>
-        <a href="{{ path('add_categorie') }}">AJOUTER UNE CATÉGORIE</a>
+        <a href="{{ path('add_categorie') }}" class="boutonAjout">AJOUTER UNE CATÉGORIE</a>
         {% if categories %}
-            <table>
+            <table class="tableau">
                 <thead>
                     <tr>
                         <th>Catégorie</th>
@@ -22,6 +22,8 @@
                             <td>{{ categorie.modules | length }}</td>
                             {% if categorie.modules | length == 0 %}
                                 <td><a href="{{ path('delete_categorie', { 'id' : categorie.id }) }}"><i class="fa-solid fa-trash"></i></a></td>
+                            {% else %}
+                                <td></td>
                             {% endif %}
                         </tr>
                     {% endfor %}
