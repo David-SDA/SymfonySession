@@ -60,8 +60,12 @@
                                     <tr>
                                         <td><a href="{{ path('show_module', { 'id' : module.id }) }}">{{ module.libelle }}</a></td>
                                         <td><a href="{{ path('show_categorie', { 'id' : module.categorie.id }) }}">{{ module.categorie }}</a></td>
-                                        <td><input type="number" name="jours" id="jours"></td>
-                                        <td><a href="#"><i class="fa-solid fa-plus"></i></a></td>
+                                        <td colspan="2">
+                                            <form method="post" action="{{ path('addModule_session', { 'id' : session.id, 'module_id' : module.id }) }}" class="ajoutModuleSession">
+                                                <input type="number" name="nombreJours" id="nombreJours">
+                                                <input type="submit" value="+">
+                                            </form>
+                                        </td>
                                     </tr>
                                 {% endfor %}
                             </tbody>

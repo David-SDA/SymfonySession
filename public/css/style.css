@@ -326,3 +326,27 @@ form{
     text-decoration: none;
     color: #00e;
 }
+
+/****************************************************/
+/* Le mini formulaire qui se trouve dans un tableau */
+/****************************************************/
+.ajoutModuleSession{
+    background-color: transparent;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+.ajoutModuleSession input[type="number"]{
+    width: 50px;
+    height: 50px;
+}
+.ajoutModuleSession input[type="submit"]{
+    width: 50px;
+    height: 50px;
+    background-color: #05BB72;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 2em;
+}

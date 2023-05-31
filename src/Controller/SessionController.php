@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Module;
 use App\Entity\Session;
+use App\Entity\SessionModule;
 use App\Entity\Stagiaire;
 use App\Form\SessionType;
 use App\Repository\ModuleRepository;
@@ -86,6 +87,20 @@ class SessionController extends AbstractController
         $entityManager->persist($stagiaire_id);
         $entityManager->flush();
         return $this->redirectToRoute("show_session", [
+            'id' => $id->getId()
+        ]);
+    }
+    #[Route('/session/{id}/addModule/{module_id}', name: 'addModule_session')]
+    public function addModule(EntityManagerInterface $entityManager, Session $id, Module $module_id, Request $request): Response{
+        if($request->isMethod('POST')){
+            $sessionModule = new SessionModule();
+            $sessionModule->setSession($id);
+            $sessionModule->setModule($module_id);
+            $sessionModule->setNombreJours(intval($request->get('nombreJours')));
+            $entityManager->persist($sessionModule);
+            $entityManager->flush();
+        }
+        return $this->redirectToRoute('show_session', [
             'id' => $id->getId()
         ]);
     }
