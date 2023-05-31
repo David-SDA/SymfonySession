@@ -18,14 +18,45 @@
             <h1>Ajouter un stagiaire</h1>
         {% endif %}
 
-        {{ form_start(formAddStagiaire) }}
-            {{ form_row(formAddStagiaire.nom, {'label' : 'Nom :'}) }}
-            {{ form_row(formAddStagiaire.prenom, {'label' : 'Prénom :'}) }}
-            {{ form_row(formAddStagiaire.sexe, {'label' : 'Sexe :'}) }}
-            {{ form_row(formAddStagiaire.dateNaissance, {'label' : 'Date de naissance :'}) }}
-            {{ form_row(formAddStagiaire.ville, {'label' : 'Ville :'}) }}
-            {{ form_row(formAddStagiaire.email, {'label' : 'Email :'}) }}
-            {{ form_row(formAddStagiaire.telephone, {'label' : 'Téléphone :'}) }}
+        {{ form_start(formAddStagiaire, { 'attr' : { 'class' : 'ajoutModification' } }) }}
+            <div class="ligneFormulaire">
+                {{ form_label(formAddStagiaire.nom, 'Nom :') }}
+                {{ form_widget(formAddStagiaire.nom) }}
+            </div>
+            <div class="ligneFormulaire">
+                {{ form_label(formAddStagiaire.prenom, 'Prénom :') }}
+                {{ form_widget(formAddStagiaire.prenom) }}
+            </div>
+            <div class="ligneFormulaire">
+                {{ form_label(formAddStagiaire.sexe, 'Sexe :') }}
+                {{ form_widget(formAddStagiaire.sexe) }}
+            </div>
+            <div class="ligneFormulaire">
+                {{ form_label(formAddStagiaire.dateNaissance, 'Prénom :') }}
+                {{ form_widget(formAddStagiaire.dateNaissance) }}
+            </div>
+            <div class="ligneFormulaire">
+                {{ form_label(formAddStagiaire.ville, 'Ville :') }}
+                {{ form_widget(formAddStagiaire.ville) }}
+            </div>
+            <div class="ligneFormulaire">
+                {{ form_label(formAddStagiaire.email, 'Email :') }}
+                {{ form_widget(formAddStagiaire.email) }}
+            </div>
+            <div class="ligneFormulaire">
+                {{ form_label(formAddStagiaire.telephone, 'Téléphone :') }}
+                {{ form_widget(formAddStagiaire.telephone) }}
+            </div>
+            {# Si edit existe, c'est que l'on veut éditer et on adapte le texte dans le bouton de submit #}
+            {% if edit %}
+                <div class="ligneSubmit">
+                    {{ form_row(formAddStagiaire.submit, {'label' : 'MODIFIER LE STAGIAIRE'}) }}
+                </div>
+            {% else %}
+                <div class="ligneSubmit">
+                    {{ form_row(formAddStagiaire.submit, {'label' : 'AJOUTER LE STAGIAIRE'}) }}
+                </div>
+            {% endif %}
         {{ form_end(formAddStagiaire) }}
     </div>
 {% endblock %}
