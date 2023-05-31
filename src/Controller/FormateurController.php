@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Session;
 use App\Entity\Formateur;
 use App\Form\FormateurType;
 use App\Repository\FormateurRepository;
@@ -55,6 +56,17 @@ class FormateurController extends AbstractController
         $entityManager->flush();
 
         return $this->redirectToRoute("app_formateur");
+    }
+
+
+    #[Route('formateur/{id}/unsubscribe/{session_id}', name : 'unsubscribe_formateur')]
+    public function unsubscribe(EntityManagerInterface $entityManager, Formateur $id, Session $session_id): Response{
+        $session_id->setFormateur(null);
+        $id->removeSession($session_id);
+        $entityManager->flush();
+        return $this->redirectToRoute("show_session", [
+            'id' => $session_id->getId()
+        ]);
     }
 
 

@@ -10,7 +10,11 @@
             </div>
             <div class="details">
                 <h2><i>Détails :</i></h2>
-                <h3>Formateur référent : <i><a href="{{ path('show_formateur', { 'id' : session.formateur.id }) }}">{{ session.formateur }}</a></i></h3>
+                {% if session.formateur %}
+                    <h3>Formateur référent : <i><a href="{{ path('show_formateur', { 'id' : session.formateur.id }) }}">{{ session.formateur }}</a></i></h3>
+                {% else %}
+                    <h3>Formateur référent : <i>Pas de formateur référent</i></h3>
+                {% endif %}
                 <p><b>Période : </b>{{ session.dateDebut | date("d/m/Y") }} - {{ session.dateFin | date("d/m/Y") }}</p>
                 <p><b>Nombre de places total : </b>{{ session.nombrePlaces }}</p>
                 <p><b>Nombre de place disponibles : </b>{{ session.nombrePlaces - (session.stagiaires | length) }}</p>
