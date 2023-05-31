@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %} 
+
+{% block title %}Détails d'un formateur{% endblock %}
+
+{% block body %} 
+    <div class="page">
+        {% if formateur %}
+            <div class="titrePage">
+                <h1>{{ formateur }} <a href="#" class="boutonModification"><i class="fa-solid fa-pen-to-square"></i></a></h1>
+            </div>
+            <div>
+                {% if formateur.sessions %}
+                <table class="tableau">
+                    <thead>
+                        <tr>
+                            <th>Disponibilité</th>
+                            <th>Formation</th>
+                            <th>Session</th>
+                            <th>Date de début</th>
+                            <th>Date de fin</th>
+                            <th>Inscrits</th>
+                            <th>Retirer</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for session in formateur.sessions %}
+                        <tr>
+                            {% if session.stagiaires | length < session.nombrePlaces %}
+                                <td><p class="disponible">DISPONIBLE</p></td>
+                            {% else %}
+                                <td><p class="complet">COMPLET</p></td>
+                            {% endif %}
+                            <td><a href="{{ path('show_formation', { 'id' : session.formation.id }) }}">{{ session.formation }}</a></td>
+                            <td><a href="{{ path('show_session', { 'id' : session.id }) }}">{{ session }}</a></td>
+                            <td>{{ session.dateDebut | date("d/m/Y") }}</td>
+                            <td>{{ session.dateFin | date("d/m/Y") }}</td>
+                            <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
+                            <td><a href=""><i class="fa-solid fa-xmark"></i></a></td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>    
+                </table>
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+{% endblock %}

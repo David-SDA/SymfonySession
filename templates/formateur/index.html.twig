@@ -18,7 +18,7 @@
                 <tbody>
                     {% for formateur in formateurs %}
                         <tr>
-                            <td><a href="">{{ formateur }}</a></td>
+                            <td><a href="{{ path('show_formateur', { 'id' : formateur.id }) }}">{{ formateur }}</a></td>
                             <td>{{ formateur.sessions | length }}</td>
                             {% if formateur.sessions | length == 0 %}
                                 <td><a href=""><i class="fa-solid fa-trash"></i></a></td>
