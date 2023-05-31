@@ -30,7 +30,11 @@ class SessionType extends AbstractType
                 'class' => Formation::class,
                 'choice_label' => 'libelle'
             ])
-            ->add('submit', SubmitType::class)        ;
+            ->add('submit', SubmitType::class, [
+                'attr' => [
+                    'class' => 'boutonSubmit grand'
+                ]
+            ])        ;
     }
 
     public function configureOptions(OptionsResolver $resolver): void

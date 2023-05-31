@@ -6,7 +6,7 @@
     <div class="page">
         {% if formation %}
             <div class="titrePage">
-                <h1>{{ formation }} <a href="{{ path('edit_formation', { 'id' : formation.id }) }}"><i class="fa-solid fa-pen-to-square"></i></a></h1>
+                <h1>{{ formation }} <a href="{{ path('edit_formation', { 'id' : formation.id }) }}" class="boutonModification"><i class="fa-solid fa-pen-to-square"></i></a></h1>
                 <p><i>Voici les différentes sessions de cette formation</i></p>
             </div>
             {# Si on a bien des sessions #}

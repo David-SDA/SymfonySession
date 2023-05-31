@@ -5,9 +5,9 @@
 {% block body %}
     <div class="page">
         <h1 class="titrePage">LISTE DES SESSIONS</h1>
-        <a href="{{ path('add_session') }}">AJOUTER UNE SESSION</a>
+        <a href="{{ path('add_session') }}" class="boutonAjout">AJOUTER UNE SESSION</a>
         {% if sessions %}
-            <table>
+            <table class="tableau">
                 <thead>
                     <tr>
                         <th>Disponibilité</th>
@@ -23,9 +23,9 @@
                     {% for session in sessions %}
                         <tr>
                             {% if session.stagiaires | length < session.nombrePlaces %}
-                                <td>DISPONIBLE</td>
+                                <td><p class="disponible">DISPONIBLE</p></td>
                             {% else %}
-                                <td>COMPLET</td>
+                                <td><p class="complet">COMPLET</p></td>
                             {% endif %}
                             <td><a href="{{ path('show_formation', { 'id'  : session.formation.id }) }}">{{ session.formation }}</a></td>
                             <td><a href="{{ path('show_session', { 'id' : session.id }) }}">{{ session }}</a></td>
@@ -34,6 +34,8 @@
                             <td>{{ session.stagiaires | length }} / {{ session.nombrePlaces }}</td>
                             {% if session.stagiaires | length == 0 and session.sessionModules | length == 0 %}
                                 <td><a href="{{ path('delete_session', { 'id' : session.id }) }}"><i class="fa-solid fa-trash"></i></a></td>
+                            {% else %}
+                                <td></td>
                             {% endif %}
                         </tr>
                     {% endfor %}

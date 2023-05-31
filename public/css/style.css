@@ -129,7 +129,7 @@ form{
     margin-bottom: 0.5vh;
     font-weight: 500;
 }
-.ligneFormulaire input{
+.ligneFormulaire input, .ligneFormulaire select{
     align-self: normal;
     height: 4vh;
     padding: 10px;
@@ -137,6 +137,9 @@ form{
     border: none;
 }
 
+/**********************************************/
+/* Une ligne qui contient le bouton de submit */
+/**********************************************/
 .ligneSubmit{
     display: flex;
     flex-direction: column;
@@ -214,6 +217,9 @@ form{
     table-layout: fixed;
     box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
 }
+.petit{
+    width: 40vw;
+}
 .tableau thead{
     background-color: #4f4f4f;
     border-bottom: 1px solid #fff;
@@ -245,8 +251,22 @@ form{
     text-decoration: none;
     color: #00e;
 }
-.tableau .fa-trash{
+.tableau .fa-trash, .tableau .fa-xmark{
     color: #dd2121;
+}
+.tableau .fa-plus{
+    color: #05BB72;
+}
+
+/*********************************************************************/
+/* Une partie de la page qui contient 2 tableaux dans une même ligne */
+/*********************************************************************/
+.deuxTableaux{
+    width: 90vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 2vh;
 }
 
 /*************************************************************************/
@@ -274,4 +294,35 @@ form{
 }
 .boutonAjout:hover{
     transform: scale(0.9);
+}
+
+/*****************************/
+/* Pour afficher les détails */
+/*****************************/
+.details{
+    background-color: #4f4f4f;
+    color: #fff;
+    width: 90vw;
+    margin-bottom: 2vh;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 2vh 1vw;
+}
+.details h2{
+    margin-left: 1vw;
+    margin-bottom: 1vh;
+}
+.details p{
+    margin-top: 0.5vh;
+    letter-spacing: 0.05em;
+}
+
+/****************************************************************/
+/* Le bouton de modification qui est à côté du titre de la page */
+/****************************************************************/
+.boutonModification{
+    text-decoration: none;
+    color: #00e;
 }

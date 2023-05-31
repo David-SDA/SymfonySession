@@ -18,12 +18,37 @@
             <h1>Ajouter une session</h1>
         {% endif %}
 
-        {{ form_start(formAddSession) }}
-            {{ form_row(formAddSession.libelle, {'label' : 'Nom de la session :'}) }}
-            {{ form_row(formAddSession.nombrePlaces, {'label' : 'Nombre de places :'}) }}
-            {{ form_row(formAddSession.dateDebut, {'label' : 'Date de début :'}) }}
-            {{ form_row(formAddSession.dateFin, {'label' : 'Date de fin :'}) }}
-            {{ form_row(formAddSession.formation, {'label' : 'Formation :'}) }}
+        {{ form_start(formAddSession, { 'attr' : { 'class' : 'ajoutModification' }}) }}
+            <div class="ligneFormulaire">
+                {{ form_label(formAddSession.libelle, 'Nom de la session :') }}
+                {{ form_widget(formAddSession.libelle) }}
+            </div>
+            <div class="ligneFormulaire">
+                {{ form_label(formAddSession.nombrePlaces, 'Nombre de places : ') }}
+                {{ form_widget(formAddSession.nombrePlaces) }}
+            </div>
+            <div class="ligneFormulaire">
+                {{ form_label(formAddSession.dateDebut, 'Date de début :') }}
+                {{ form_widget(formAddSession.dateDebut) }}
+            </div>
+            <div class="ligneFormulaire">
+                {{ form_label(formAddSession.dateFin, 'Date de fin :') }}
+                {{ form_widget(formAddSession.dateFin) }}
+            </div>
+            <div class="ligneFormulaire">
+                {{ form_label(formAddSession.formation, 'Formation :') }}
+                {{ form_widget(formAddSession.formation) }}
+            </div>
+            {# Si edit existe, c'est que l'on veut éditer et on adapte le texte dans le bouton de submit #}
+            {% if edit %}
+                <div class="ligneSubmit">
+                    {{ form_row(formAddSession.submit, {'label' : 'MODIFIER LA SESSION'}) }}
+                </div>
+            {% else %}
+                <div class="ligneSubmit">
+                    {{ form_row(formAddSession.submit, {'label' : 'AJOUTER LA SESSION'}) }}
+                </div>
+            {% endif %}
         {{ form_end(formAddSession) }}
     </div>
 {% endblock %}
