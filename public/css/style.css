@@ -355,3 +355,28 @@ form{
     cursor: pointer;
     font-size: 2em;
 }
+
+/****************************************************************************/
+/* Le message de notification lors de la suppression d'un stagiaire/session */
+/****************************************************************************/
+.notice{
+    height: 5vh;
+    color: #fff;
+    background-color: #05bb72;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    position: fixed;
+    top: 11vh;
+    left: 4vw;
+    animation: fadeIn 5s;
+    opacity: 0;
+}
+@keyframes fadeIn{
+    0% {opacity: 0;}
+    30% {opacity: 1;}
+    60% {opacity: 1;}
+    100% {opacity: 0;}
+}
