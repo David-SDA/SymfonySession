@@ -81,11 +81,13 @@ class SessionController extends AbstractController
 
     #[Route('/session/{id}/addStagiaire/{stagiaire_id}', name: 'addStagiaire_session')]
     public function addStagiaire(EntityManagerInterface $entityManager, Session $id, Stagiaire $stagiaire_id){
-        $stagiaire_id->addSession($id);
-        $id->addStagiaire($stagiaire_id);
-        $entityManager->persist($id);
-        $entityManager->persist($stagiaire_id);
-        $entityManager->flush();
+        if(count($id->getStagiaires()) < 3){
+            $stagiaire_id->addSession($id);
+            $id->addStagiaire($stagiaire_id);
+            $entityManager->persist($id);
+            $entityManager->persist($stagiaire_id);
+            $entityManager->flush();
+        }
         return $this->redirectToRoute("show_session", [
             'id' => $id->getId()
         ]);
