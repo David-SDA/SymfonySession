@@ -32,3 +32,12 @@ Un utilisateur connecté pourra gérer les stagiaires, les sessions, les formati
 | Ajout d'une session | Modification d'une session |
 | - | - |
 | ![Page d'ajout d'une session](https://github.com/David-SDA/SymfonySession/blob/master/assets/session/page_ajout_session.png) | ![Page de modification d'une session](https://github.com/David-SDA/SymfonySession/blob/master/assets/session/page_modification_session.png) |
+
+### Stagiaire
+| Liste des stagiaires | Un stagiaire |
+| - | - |
+| ![Page de la liste des stagiaires](https://github.com/David-SDA/SymfonySession/blob/master/assets/stagiaire/page_liste_stagiaires.png) | ![Page d'un stagiaire](https://github.com/David-SDA/SymfonySession/blob/master/assets/stagiaire/page_un_stagiaire.png) |
+
+| Ajout d'un stagiaire | Modification d'un stagiaire |
+| - | - |
+| ![Page d'ajout d'un stagiaire](https://github.com/David-SDA/SymfonySession/blob/master/assets/stagiaire/page_ajout_stagiaire.png) | ![Page de modification d'un stagiaire](https://github.com/David-SDA/SymfonySession/blob/master/assets/stagiaire/page_modification_stagiaire.png) |
