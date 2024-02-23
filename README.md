@@ -23,3 +23,12 @@ Un utilisateur connecté pourra gérer les stagiaires, les sessions, les formati
 | Ajout d'une formation | Modification d'une formation |
 | - | - |
 | ![Page d'ajout d'une formation](https://github.com/David-SDA/SymfonySession/blob/master/assets/formation/page_ajout_formation.png) | ![Page de modification d'une formation](https://github.com/David-SDA/SymfonySession/blob/master/assets/formation/page_modif_formation.png) |
+
+### Session
+| Liste des sessions | Une session |
+| - | - |
+| ![Page de la liste des sessions](https://github.com/David-SDA/SymfonySession/blob/master/assets/session/page_liste_sessions.png) | ![Page d'une session](https://github.com/David-SDA/SymfonySession/blob/master/assets/session/page_une_session.png) |
+
+| Ajout d'une session | Modification d'une session |
+| - | - |
+| ![Page d'ajout d'une session](https://github.com/David-SDA/SymfonySession/blob/master/assets/session/page_ajout_session.png) | ![Page de modification d'une session](https://github.com/David-SDA/SymfonySession/blob/master/assets/session/page_modification_session.png) |
