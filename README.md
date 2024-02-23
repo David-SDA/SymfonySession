@@ -41,3 +41,12 @@ Un utilisateur connecté pourra gérer les stagiaires, les sessions, les formati
 | Ajout d'un stagiaire | Modification d'un stagiaire |
 | - | - |
 | ![Page d'ajout d'un stagiaire](https://github.com/David-SDA/SymfonySession/blob/master/assets/stagiaire/page_ajout_stagiaire.png) | ![Page de modification d'un stagiaire](https://github.com/David-SDA/SymfonySession/blob/master/assets/stagiaire/page_modification_stagiaire.png) |
+
+### Catégorie
+| Liste des catégories | Une catégorie |
+| - | - |
+| ![Page de la liste des catégories](https://github.com/David-SDA/SymfonySession/blob/master/assets/categorie/page_liste_categories.png) | ![Page d'une catégorie](https://github.com/David-SDA/SymfonySession/blob/master/assets/categorie/page_une_categorie.png) |
+
+| Ajout d'une catégorie | Modification d'une catégorie |
+| - | - |
+| ![Page d'ajout d'une catégorie](https://github.com/David-SDA/SymfonySession/blob/master/assets/categorie/page_ajout_categorie.png) | ![Page de modification d'une catégorie](https://github.com/David-SDA/SymfonySession/blob/master/assets/categorie/page_modification_categorie.png) |
