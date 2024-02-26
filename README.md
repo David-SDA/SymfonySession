@@ -55,3 +55,12 @@ Un utilisateur connecté pourra gérer les stagiaires, les sessions, les formati
 | Un module | Ajout d'un module | Modification d'un module |
 | - | - | - |
 | ![Page d'un module](https://github.com/David-SDA/SymfonySession/blob/master/assets/module/page_un_module.png) | ![Page d'ajout d'un module](https://github.com/David-SDA/SymfonySession/blob/master/assets/module/page_ajout_module.png) |  ![Page de modification d'un module](https://github.com/David-SDA/SymfonySession/blob/master/assets/module/page_modification_module.png) |
+
+### Formateur
+| Liste des formateurs | Un formateur |
+| - | - |
+| ![Page de la liste des formateurs](https://github.com/David-SDA/SymfonySession/blob/master/assets/formateur/page_liste_formateurs.png) | ![Page d'un formateur](https://github.com/David-SDA/SymfonySession/blob/master/assets/formateur/page_un_formateur.png) |
+
+| Ajout d'un formateur | Modification d'un formateur |
+| - | - |
+| ![Page d'ajout d'un formateur](https://github.com/David-SDA/SymfonySession/blob/master/assets/formateur/page_ajout_formateur.png) | ![Page de modification d'un formateur](https://github.com/David-SDA/SymfonySession/blob/master/assets/formateur/page_modification_formateur.png) |
